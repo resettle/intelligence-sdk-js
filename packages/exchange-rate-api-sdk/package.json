@@ -1,6 +1,6 @@
 {
   "name": "@resettle/exchange-rate-api-sdk",
-  "version": null,
+  "version": "1.0.0",
   "type": "module",
   "main": "./dist/index.js",
   "module": "./dist/index.mjs",

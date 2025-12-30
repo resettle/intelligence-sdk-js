@@ -1,0 +1,32 @@
+{
+  "name": "@resettle/exchange-rate-api-sdk",
+  "version": null,
+  "type": "module",
+  "main": "./dist/index.js",
+  "module": "./dist/index.mjs",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "import": "./dist/index.mjs",
+      "require": "./dist/index.js"
+    }
+  },
+  "homepage": "https://github.com/resettle/intelligence-sdk-js/tree/main/packages/exchange-rate-api-sdk",
+  "author": {
+    "name": "Resettle Team",
+    "url": "https://resettle.ai"
+  },
+  "license": "Apache-2.0",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/resettle/intelligence-sdk-js.git",
+    "directory": "packages/exchange-rate-api-sdk"
+  },
+  "scripts": {
+    "build": "tsc --noEmit && tsdown"
+  },
+  "devDependencies": {
+    "tsdown": "0.18.2",
+    "typescript": "5.9.3"
+  }
+}

@@ -1,0 +1,612 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "Resettle Occupation API",
+    "description": "Seamlessly translate occupation codes across 10 global classification systems. Our Occupation API provides instant crosswalk mappings between ISCO, USSOC, NOC, ANZSCO, UKSOC, and more, supporting international hiring, immigration assessments, and labor market analysis. Search and query thousands of standardized occupation codes with fuzzy matching, enabling your applications to understand and match careers across borders. Perfect for HR platforms, immigration tech, and workforce analytics solutions.",
+    "version": "1",
+    "termsOfService": "https://resettle.ai/terms",
+    "contact": {
+      "email": "contact@resettle.ai"
+    },
+    "license": {
+      "name": "Apache-2.0",
+      "url": "http://www.apache.org/licenses/LICENSE-2.0.html"
+    }
+  },
+  "externalDocs": {
+    "description": "Try our APIs out",
+    "url": "https://resettle.ai/dev"
+  },
+  "servers": [
+    {
+      "url": "https://resettle-occupation-api.p.rapidapi.com/occupation"
+    }
+  ],
+  "security": [
+    {
+      "RapidAuth": []
+    }
+  ],
+  "components": {
+    "securitySchemes": {
+      "RapidAuth": {
+        "type": "apiKey",
+        "in": "header",
+        "description": "If you don't currently have an API key, you can visit https://resettle.ai/dev to acquire a free one",
+        "name": "X-RapidAPI-Key"
+      }
+    },
+    "parameters": {
+      "RapidHost": {
+        "name": "X-RapidAPI-Host",
+        "in": "header",
+        "required": true,
+        "schema": {
+          "type": "string",
+          "enum": [
+            "resettle-occupation-api.p.rapidapi.com"
+          ]
+        }
+      }
+    }
+  },
+  "paths": {
+    "/occupation/crosswalk": {
+      "get": {
+        "operationId": "getOccupationCrosswalk",
+        "description": "Crosswalk occupation codes between classifications",
+        "responses": {
+          "200": {
+            "description": "Occupation codes crosswalked successfully",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "code": {
+                      "type": "number",
+                      "const": 0
+                    },
+                    "message": {
+                      "type": "string",
+                      "const": "Success"
+                    },
+                    "data": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "id": {
+                            "description": "The id of the occupation code in format {classification}-{code}",
+                            "type": "string"
+                          },
+                          "classification": {
+                            "description": "The occupation classification",
+                            "type": "string",
+                            "enum": [
+                              "isco-2008",
+                              "ussoc-2018",
+                              "uksoc-2020",
+                              "nol-2024",
+                              "noc-2021",
+                              "osca-2024",
+                              "ussoc-2010",
+                              "noc-2016",
+                              "anzsco-2013",
+                              "anzsco-2022"
+                            ]
+                          },
+                          "code": {
+                            "description": "The code of the occupation under the classification",
+                            "type": "string"
+                          },
+                          "label": {
+                            "description": "The name of the occupation",
+                            "type": "string"
+                          }
+                        },
+                        "required": [
+                          "id",
+                          "classification",
+                          "code",
+                          "label"
+                        ]
+                      }
+                    }
+                  },
+                  "required": [
+                    "code",
+                    "message",
+                    "data"
+                  ]
+                },
+                "examples": {
+                  "isco-2008-2512-to-ussoc-2018": {
+                    "summary": "Crosswalk from ISCO-08 2512 to U.S. SOC 2018",
+                    "value": {
+                      "code": 0,
+                      "message": "Success",
+                      "data": [
+                        {
+                          "id": "ussoc-2018-15-1252",
+                          "classification": "ussoc-2018",
+                          "code": "15-1252",
+                          "label": "Software Developers"
+                        },
+                        {
+                          "id": "ussoc-2018-15-1253",
+                          "classification": "ussoc-2018",
+                          "code": "15-1253",
+                          "label": "Software Quality Assurance Analysts and Testers"
+                        }
+                      ]
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "in": "query",
+            "name": "from",
+            "schema": {
+              "anyOf": [
+                {
+                  "description": "The id of the occupation code in format {classification}-{code}",
+                  "type": "string"
+                },
+                {
+                  "type": "object",
+                  "properties": {
+                    "classification": {
+                      "description": "The occupation classification",
+                      "type": "string",
+                      "enum": [
+                        "isco-2008",
+                        "ussoc-2018",
+                        "uksoc-2020",
+                        "nol-2024",
+                        "noc-2021",
+                        "osca-2024",
+                        "ussoc-2010",
+                        "noc-2016",
+                        "anzsco-2013",
+                        "anzsco-2022"
+                      ]
+                    },
+                    "code": {
+                      "description": "The code of the occupation under the classification",
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "classification",
+                    "code"
+                  ]
+                }
+              ]
+            },
+            "required": true
+          },
+          {
+            "in": "query",
+            "name": "to",
+            "schema": {
+              "type": "string",
+              "enum": [
+                "isco-2008",
+                "ussoc-2018",
+                "uksoc-2020",
+                "nol-2024",
+                "noc-2021",
+                "osca-2024",
+                "ussoc-2010",
+                "noc-2016",
+                "anzsco-2013",
+                "anzsco-2022"
+              ]
+            },
+            "required": true,
+            "description": "The occupation classification"
+          }
+        ]
+      }
+    },
+    "/occupation/query": {
+      "get": {
+        "operationId": "getOccupationQuery",
+        "description": "Query occupation codes",
+        "responses": {
+          "200": {
+            "description": "Occupation codes retrieved successfully",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "code": {
+                      "type": "number",
+                      "const": 0
+                    },
+                    "message": {
+                      "type": "string",
+                      "const": "Success"
+                    },
+                    "data": {
+                      "type": "object",
+                      "properties": {
+                        "metadata": {
+                          "type": "object",
+                          "properties": {
+                            "limit": {
+                              "type": "integer",
+                              "minimum": -9007199254740991,
+                              "maximum": 9007199254740991
+                            },
+                            "order_by": {
+                              "type": "string",
+                              "enum": [
+                                "id"
+                              ]
+                            },
+                            "order_by_direction": {
+                              "type": "string",
+                              "enum": [
+                                "asc",
+                                "desc"
+                              ]
+                            },
+                            "cursor": {
+                              "anyOf": [
+                                {
+                                  "type": "string"
+                                },
+                                {
+                                  "type": "null"
+                                }
+                              ]
+                            },
+                            "next_cursor": {
+                              "anyOf": [
+                                {
+                                  "type": "string"
+                                },
+                                {
+                                  "type": "null"
+                                }
+                              ]
+                            }
+                          },
+                          "required": [
+                            "limit",
+                            "order_by",
+                            "order_by_direction",
+                            "cursor",
+                            "next_cursor"
+                          ]
+                        },
+                        "data": {
+                          "type": "array",
+                          "items": {
+                            "type": "object",
+                            "properties": {
+                              "id": {
+                                "description": "The id of the occupation code in format {classification}-{code}",
+                                "type": "string"
+                              },
+                              "classification": {
+                                "description": "The occupation classification",
+                                "type": "string",
+                                "enum": [
+                                  "isco-2008",
+                                  "ussoc-2018",
+                                  "uksoc-2020",
+                                  "nol-2024",
+                                  "noc-2021",
+                                  "osca-2024",
+                                  "ussoc-2010",
+                                  "noc-2016",
+                                  "anzsco-2013",
+                                  "anzsco-2022"
+                                ]
+                              },
+                              "code": {
+                                "description": "The code of the occupation under the classification",
+                                "type": "string"
+                              },
+                              "label": {
+                                "description": "The name of the occupation",
+                                "type": "string"
+                              }
+                            },
+                            "required": [
+                              "id",
+                              "classification",
+                              "code",
+                              "label"
+                            ]
+                          }
+                        }
+                      },
+                      "required": [
+                        "metadata",
+                        "data"
+                      ]
+                    }
+                  },
+                  "required": [
+                    "code",
+                    "message",
+                    "data"
+                  ]
+                },
+                "examples": {
+                  "query-software-developers": {
+                    "summary": "Query for software developers",
+                    "value": {
+                      "code": 0,
+                      "message": "Success",
+                      "data": {
+                        "metadata": {
+                          "limit": 100,
+                          "order_by": "id",
+                          "order_by_direction": "desc",
+                          "cursor": null,
+                          "next_cursor": "isco-2008-2512"
+                        },
+                        "data": [
+                          {
+                            "id": "isco-2008-2512",
+                            "classification": "isco-2008",
+                            "code": "2512",
+                            "label": "Software Developers"
+                          }
+                        ]
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "in": "query",
+            "name": "classification",
+            "schema": {
+              "type": "string",
+              "enum": [
+                "isco-2008",
+                "ussoc-2018",
+                "uksoc-2020",
+                "nol-2024",
+                "noc-2021",
+                "osca-2024",
+                "ussoc-2010",
+                "noc-2016",
+                "anzsco-2013",
+                "anzsco-2022"
+              ]
+            },
+            "required": true,
+            "description": "The occupation classification"
+          },
+          {
+            "in": "query",
+            "name": "code",
+            "schema": {
+              "type": "string"
+            },
+            "description": "The code of the occupation under the classification"
+          },
+          {
+            "in": "query",
+            "name": "cursor",
+            "schema": {
+              "type": "string"
+            },
+            "description": "The identifier of the page"
+          },
+          {
+            "in": "query",
+            "name": "limit",
+            "schema": {
+              "type": "integer",
+              "minimum": 1,
+              "maximum": 100
+            },
+            "description": "The max items to retrieve, default to 100"
+          }
+        ]
+      }
+    },
+    "/occupation/search": {
+      "get": {
+        "operationId": "getOccupationSearch",
+        "description": "Search occupation codes",
+        "responses": {
+          "200": {
+            "description": "Occupation codes found successfully",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "code": {
+                      "type": "number",
+                      "const": 0
+                    },
+                    "message": {
+                      "type": "string",
+                      "const": "Success"
+                    },
+                    "data": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "id": {
+                            "description": "The id of the occupation code in format {classification}-{code}",
+                            "type": "string"
+                          },
+                          "classification": {
+                            "description": "The occupation classification",
+                            "type": "string",
+                            "enum": [
+                              "isco-2008",
+                              "ussoc-2018",
+                              "uksoc-2020",
+                              "nol-2024",
+                              "noc-2021",
+                              "osca-2024",
+                              "ussoc-2010",
+                              "noc-2016",
+                              "anzsco-2013",
+                              "anzsco-2022"
+                            ]
+                          },
+                          "code": {
+                            "description": "The code of the occupation under the classification",
+                            "type": "string"
+                          },
+                          "label": {
+                            "description": "The name of the occupation",
+                            "type": "string"
+                          }
+                        },
+                        "required": [
+                          "id",
+                          "classification",
+                          "code",
+                          "label"
+                        ]
+                      }
+                    }
+                  },
+                  "required": [
+                    "code",
+                    "message",
+                    "data"
+                  ]
+                },
+                "examples": {
+                  "search-software-engineers": {
+                    "summary": "Search results for \"software engineers\"",
+                    "value": {
+                      "code": 0,
+                      "message": "Success",
+                      "data": [
+                        {
+                          "id": "anzsco-2013-261313",
+                          "classification": "anzsco-2013",
+                          "code": "261313",
+                          "label": "Software Engineer"
+                        },
+                        {
+                          "id": "anzsco-2022-261313",
+                          "classification": "anzsco-2022",
+                          "code": "261313",
+                          "label": "Software Engineer"
+                        },
+                        {
+                          "id": "noc-2016-2147",
+                          "classification": "noc-2016",
+                          "code": "2147",
+                          "label": "Computer engineers (except software engineers and designers)"
+                        },
+                        {
+                          "id": "noc-2016-2173",
+                          "classification": "noc-2016",
+                          "code": "2173",
+                          "label": "Software engineers and designers"
+                        },
+                        {
+                          "id": "noc-2021-21231",
+                          "classification": "noc-2021",
+                          "code": "21231",
+                          "label": "Software engineers and designers"
+                        },
+                        {
+                          "id": "noc-2021-21311",
+                          "classification": "noc-2021",
+                          "code": "21311",
+                          "label": "Computer engineers (except software engineers and designers)"
+                        },
+                        {
+                          "id": "nol-2024-261313",
+                          "classification": "nol-2024",
+                          "code": "261313",
+                          "label": "Software Engineer"
+                        },
+                        {
+                          "id": "osca-2024-273333",
+                          "classification": "osca-2024",
+                          "code": "273333",
+                          "label": "Software Engineer"
+                        }
+                      ]
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "in": "query",
+            "name": "classification",
+            "schema": {
+              "type": "string",
+              "enum": [
+                "isco-2008",
+                "ussoc-2018",
+                "uksoc-2020",
+                "nol-2024",
+                "noc-2021",
+                "osca-2024",
+                "ussoc-2010",
+                "noc-2016",
+                "anzsco-2013",
+                "anzsco-2022"
+              ]
+            },
+            "description": "The code of the occupation under the classification"
+          },
+          {
+            "in": "query",
+            "name": "q",
+            "schema": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 100
+            },
+            "required": true,
+            "description": "The searched text"
+          },
+          {
+            "in": "query",
+            "name": "fuzzy",
+            "schema": {
+              "type": "string"
+            },
+            "description": "Whether to perform a fuzzy match or exact text match"
+          },
+          {
+            "in": "query",
+            "name": "limit",
+            "schema": {
+              "type": "integer",
+              "minimum": 1,
+              "maximum": 100
+            },
+            "description": "The max items to retrieve, default to 100"
+          }
+        ]
+      }
+    }
+  }
+}

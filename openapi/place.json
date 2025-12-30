@@ -1,0 +1,1427 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "Resettle Place API",
+    "description": "Power your location intelligence with comprehensive place data and cost of living insights. Our Place API delivers searchable geographic information for cities and regions worldwide, including coordinates, population, elevation, and aliases. Get real-time cost of living data to help users make informed relocation decisions. With fuzzy search and country filtering, integrate location-aware features into migration platforms, expat tools, or any application requiring rich place intelligence.",
+    "version": "1",
+    "termsOfService": "https://resettle.ai/terms",
+    "contact": {
+      "email": "contact@resettle.ai"
+    },
+    "license": {
+      "name": "Apache-2.0",
+      "url": "http://www.apache.org/licenses/LICENSE-2.0.html"
+    }
+  },
+  "servers": [
+    {
+      "url": "https://resettle-place-api.p.rapidapi.com/place"
+    }
+  ],
+  "externalDocs": {
+    "description": "Try our APIs out",
+    "url": "https://resettle.ai/dev"
+  },
+  "security": [
+    {
+      "RapidAuth": []
+    }
+  ],
+  "components": {
+    "securitySchemes": {
+      "RapidAuth": {
+        "type": "apiKey",
+        "in": "header",
+        "description": "If you don't currently have an API key, you can visit https://resettle.ai/dev to acquire a free one",
+        "name": "X-RapidAPI-Key"
+      }
+    },
+    "parameters": {
+      "RapidHost": {
+        "name": "X-RapidAPI-Host",
+        "in": "header",
+        "required": true,
+        "schema": {
+          "type": "string",
+          "enum": [
+            "resettle-place-api.p.rapidapi.com"
+          ]
+        }
+      }
+    }
+  },
+  "paths": {
+    "/place/search": {
+      "get": {
+        "operationId": "getPlaceSearch",
+        "description": "Search places",
+        "responses": {
+          "200": {
+            "description": "Places found successfully",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "code": {
+                      "type": "number",
+                      "const": 0
+                    },
+                    "message": {
+                      "type": "string",
+                      "const": "Success"
+                    },
+                    "data": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "name": {
+                            "description": "The name of the place",
+                            "type": "string"
+                          },
+                          "aliases": {
+                            "description": "The aliases of the place in different cultures and languages",
+                            "type": "array",
+                            "items": {
+                              "type": "string"
+                            }
+                          },
+                          "country_code": {
+                            "description": "The ISO 3166-1 alpha-2 country code of the place",
+                            "type": "string",
+                            "minLength": 2,
+                            "maxLength": 2
+                          },
+                          "place_id": {
+                            "type": "string",
+                            "format": "uuid",
+                            "pattern": "^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$"
+                          },
+                          "scopes": {
+                            "description": "Valid scopes of the place",
+                            "type": "array",
+                            "items": {
+                              "type": "string",
+                              "enum": [
+                                "cost-of-living",
+                                "general-info"
+                              ]
+                            }
+                          }
+                        },
+                        "required": [
+                          "name",
+                          "aliases",
+                          "country_code",
+                          "place_id",
+                          "scopes"
+                        ]
+                      }
+                    }
+                  },
+                  "required": [
+                    "code",
+                    "message",
+                    "data"
+                  ]
+                },
+                "examples": {
+                  "search-new-york": {
+                    "summary": "Search results for \"New York\"",
+                    "value": {
+                      "code": 0,
+                      "message": "Success",
+                      "data": [
+                        {
+                          "place_id": "4f0e304e-056b-4a36-9e9a-aaf9abd99249",
+                          "country_code": "US",
+                          "name": "New York City",
+                          "aliases": [
+                            "Aebura",
+                            "Bandar Raya New York",
+                            "Big Apple",
+                            "Cathair Nua-Eabhrac",
+                            "City of New York",
+                            "Eabhraig Nuadh",
+                            "Efrog Newydd",
+                            "Evrek Nowydh",
+                            "Ga-no-no",
+                            "Kanon:no",
+                            "Kanono",
+                            "Kanón:no",
+                            "Kota New York",
+                            "Lungsod ng New York",
+                            "N'ju-Jork",
+                            "NY",
+                            "NYC",
+                            "Nea Yorke",
+                            "Nei Yarrick Schtadt",
+                            "Neu Amsterdam",
+                            "Neu Jorck",
+                            "New Amsterdam",
+                            "New Orange",
+                            "New Yorc",
+                            "New York",
+                            "New York City",
+                            "New York Stad",
+                            "New York borg",
+                            "New York kenti",
+                            "New York-borg",
+                            "New Yorke",
+                            "New Yorku",
+                            "Niujorkas",
+                            "Niw Eorkʻ",
+                            "Nju Jork",
+                            "Njujork",
+                            "Nouvelle Yorck",
+                            "Nouvieau York",
+                            "Nov-Jorko",
+                            "Nova Amsterda",
+                            "Nova Iorque",
+                            "Nova York",
+                            "Nova-York",
+                            "Novjorko",
+                            "Novum Eboracum",
+                            "Nowy Jork",
+                            "Nua-Eabhrac",
+                            "Nueva York",
+                            "Nujorka",
+                            "Nyja Jorvik",
+                            "Nyu York Shehiri",
+                            "Nyu Yorkʻ",
+                            "Nòva York",
+                            "Nýja Jórvík",
+                            "Thanh pho New York",
+                            "The Big Apple",
+                            "Thành phố New York",
+                            "York Berri",
+                            "manhattan",
+                            "n'yuyorka",
+                            "ni'u iyarka siti",
+                            "niu yue",
+                            "niu yue shi",
+                            "niyuyark nakaram",
+                            "nkhr niwyxrk",
+                            "nyuyog",
+                            "nyuyog si",
+                            "nyuyoku",
+                            "nyw ywrq",
+                            "nywywrk",
+                            "Ņujorka",
+                            "Νέα Υόρκη",
+                            "Њу Јорк",
+                            "Њујорк",
+                            "Нью-Ёрк",
+                            "Нью-Йорк",
+                            "Ню Йорк",
+                            "Նիւ Եորք",
+                            "Նյու Յորք",
+                            "ניו יארק",
+                            "ניו יורק",
+                            "ניו־יאָרק",
+                            "نيويورك",
+                            "نیویارک شہر",
+                            "نیویورک",
+                            "न्यूयॉर्क",
+                            "নিউ ইয়র্ক সিটি",
+                            "நியூயார்க் நகரம்",
+                            "นครนิวยอร์ก",
+                            "ნიუ-იორკი",
+                            "ニューヨーク",
+                            "マンハッタン",
+                            "紐約",
+                            "紐約市",
+                            "뉴욕",
+                            "뉴욕 시"
+                          ],
+                          "scopes": [
+                            "general-info",
+                            "cost-of-living"
+                          ]
+                        }
+                      ]
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "in": "query",
+            "name": "q",
+            "schema": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 500
+            },
+            "required": true,
+            "description": "The searched text"
+          },
+          {
+            "in": "query",
+            "name": "fuzzy",
+            "schema": {
+              "type": "string"
+            },
+            "description": "Whether to perform a fuzzy match or exact text match"
+          },
+          {
+            "in": "query",
+            "name": "country_code",
+            "schema": {
+              "type": "string",
+              "minLength": 2,
+              "maxLength": 2
+            },
+            "description": "The ISO 3166-1 alpha-2 country code of the place"
+          },
+          {
+            "in": "query",
+            "name": "limit",
+            "schema": {
+              "type": "integer",
+              "minimum": 1,
+              "maximum": 100
+            },
+            "description": "The max items to retrieve, default to 100"
+          },
+          {
+            "in": "query",
+            "name": "scope",
+            "schema": {
+              "type": "string",
+              "enum": [
+                "cost-of-living",
+                "general-info"
+              ]
+            },
+            "description": "The scope of the searched places"
+          }
+        ]
+      }
+    },
+    "/place/query/cost-of-living": {
+      "get": {
+        "operationId": "getPlaceQueryCost-of-living",
+        "description": "Query cost of living data for a place",
+        "responses": {
+          "200": {
+            "description": "Cost of living data retrieved successfully",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "code": {
+                      "type": "number",
+                      "const": 0
+                    },
+                    "message": {
+                      "type": "string",
+                      "const": "Success"
+                    },
+                    "data": {
+                      "type": "object",
+                      "properties": {
+                        "place_id": {
+                          "type": "string",
+                          "format": "uuid",
+                          "pattern": "^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$"
+                        },
+                        "currency_code": {
+                          "type": "string",
+                          "minLength": 3,
+                          "maxLength": 3
+                        },
+                        "dining": {
+                          "type": "object",
+                          "properties": {
+                            "inexpensive": {
+                              "description": "A meal at an inexpensive restaurant",
+                              "anyOf": [
+                                {
+                                  "type": "number"
+                                },
+                                {
+                                  "type": "null"
+                                }
+                              ]
+                            },
+                            "mid_tier": {
+                              "description": "A meal for two at an mid-tier restaurant",
+                              "anyOf": [
+                                {
+                                  "type": "number"
+                                },
+                                {
+                                  "type": "null"
+                                }
+                              ]
+                            },
+                            "mcdonalds": {
+                              "description": "A combo meal at McDonald's",
+                              "anyOf": [
+                                {
+                                  "type": "number"
+                                },
+                                {
+                                  "type": "null"
+                                }
+                              ]
+                            },
+                            "domestic_beer": {
+                              "description": "Domestic beer (1 US liquid pint or 473.2 ml)",
+                              "anyOf": [
+                                {
+                                  "type": "number"
+                                },
+                                {
+                                  "type": "null"
+                                }
+                              ]
+                            },
+                            "imported_beer": {
+                              "description": "A bottle of imported beer (12 oz or 330 ml)",
+                              "anyOf": [
+                                {
+                                  "type": "number"
+                                },
+                                {
+                                  "type": "null"
+                                }
+                              ]
+                            },
+                            "cappuccino": {
+                              "description": "A cup of cappuccino",
+                              "anyOf": [
+                                {
+                                  "type": "number"
+                                },
+                                {
+                                  "type": "null"
+                                }
+                              ]
+                            },
+                            "soft_drink": {
+                              "description": "A bottle of soft drink (Coke, 12 oz or 330 ml)",
+                              "anyOf": [
+                                {
+                                  "type": "number"
+                                },
+                                {
+                                  "type": "null"
+                                }
+                              ]
+                            },
+                            "water": {
+                              "description": "A bottle of water (12 oz or 330 ml)",
+                              "anyOf": [
+                                {
+                                  "type": "number"
+                                },
+                                {
+                                  "type": "null"
+                                }
+                              ]
+                            }
+                          },
+                          "required": [
+                            "inexpensive",
+                            "mid_tier",
+                            "mcdonalds",
+                            "domestic_beer",
+                            "imported_beer",
+                            "cappuccino",
+                            "soft_drink",
+                            "water"
+                          ]
+                        },
+                        "grocery": {
+                          "type": "object",
+                          "properties": {
+                            "milk": {
+                              "description": "Milk (1 gallon or 3.8 l)",
+                              "anyOf": [
+                                {
+                                  "type": "number"
+                                },
+                                {
+                                  "type": "null"
+                                }
+                              ]
+                            },
+                            "bread": {
+                              "description": "White bread (1 lb or 0.45 kg)",
+                              "anyOf": [
+                                {
+                                  "type": "number"
+                                },
+                                {
+                                  "type": "null"
+                                }
+                              ]
+                            },
+                            "rice": {
+                              "description": "Rice (1 lb or 0.45 kg)",
+                              "anyOf": [
+                                {
+                                  "type": "number"
+                                },
+                                {
+                                  "type": "null"
+                                }
+                              ]
+                            },
+                            "eggs": {
+                              "description": "A dozen of eggs (12)",
+                              "anyOf": [
+                                {
+                                  "type": "number"
+                                },
+                                {
+                                  "type": "null"
+                                }
+                              ]
+                            },
+                            "cheese": {
+                              "description": "Cheese (1 lb or 0.45 kg)",
+                              "anyOf": [
+                                {
+                                  "type": "number"
+                                },
+                                {
+                                  "type": "null"
+                                }
+                              ]
+                            },
+                            "chicken_fillets": {
+                              "description": "Chicken fillets (1 lb or 0.45 kg)",
+                              "anyOf": [
+                                {
+                                  "type": "number"
+                                },
+                                {
+                                  "type": "null"
+                                }
+                              ]
+                            },
+                            "beef_round": {
+                              "description": "Beef round (1 lb or 0.45 kg)",
+                              "anyOf": [
+                                {
+                                  "type": "number"
+                                },
+                                {
+                                  "type": "null"
+                                }
+                              ]
+                            },
+                            "apples": {
+                              "description": "Apples (1 lb or 0.45 kg)",
+                              "anyOf": [
+                                {
+                                  "type": "number"
+                                },
+                                {
+                                  "type": "null"
+                                }
+                              ]
+                            },
+                            "bananas": {
+                              "description": "Bananas (1 lb or 0.45 kg)",
+                              "anyOf": [
+                                {
+                                  "type": "number"
+                                },
+                                {
+                                  "type": "null"
+                                }
+                              ]
+                            },
+                            "oranges": {
+                              "description": "Oranges (1 lb or 0.45 kg)",
+                              "anyOf": [
+                                {
+                                  "type": "number"
+                                },
+                                {
+                                  "type": "null"
+                                }
+                              ]
+                            },
+                            "tomatoes": {
+                              "description": "Tomatoes (1 lb or 0.45 kg)",
+                              "anyOf": [
+                                {
+                                  "type": "number"
+                                },
+                                {
+                                  "type": "null"
+                                }
+                              ]
+                            },
+                            "potatoes": {
+                              "description": "Potatoes (1 lb or 0.45 kg)",
+                              "anyOf": [
+                                {
+                                  "type": "number"
+                                },
+                                {
+                                  "type": "null"
+                                }
+                              ]
+                            },
+                            "onions": {
+                              "description": "Onions (1 lb or 0.45 kg)",
+                              "anyOf": [
+                                {
+                                  "type": "number"
+                                },
+                                {
+                                  "type": "null"
+                                }
+                              ]
+                            },
+                            "lettuce": {
+                              "description": "Lettuce (1 lb or 0.45 kg)",
+                              "anyOf": [
+                                {
+                                  "type": "number"
+                                },
+                                {
+                                  "type": "null"
+                                }
+                              ]
+                            },
+                            "water": {
+                              "description": "Water (0.4 gallon or 1.5 l)",
+                              "anyOf": [
+                                {
+                                  "type": "number"
+                                },
+                                {
+                                  "type": "null"
+                                }
+                              ]
+                            },
+                            "wine": {
+                              "description": "A bottle of mid-tier wine",
+                              "anyOf": [
+                                {
+                                  "type": "number"
+                                },
+                                {
+                                  "type": "null"
+                                }
+                              ]
+                            },
+                            "domestic_beer": {
+                              "description": "Domestic beer (17 oz or 0.5 l)",
+                              "anyOf": [
+                                {
+                                  "type": "number"
+                                },
+                                {
+                                  "type": "null"
+                                }
+                              ]
+                            },
+                            "imported_beer": {
+                              "description": "A bottle of imported beer (12 oz or 330 ml)",
+                              "anyOf": [
+                                {
+                                  "type": "number"
+                                },
+                                {
+                                  "type": "null"
+                                }
+                              ]
+                            },
+                            "cigarettes": {
+                              "description": "A pack of 20 cigarettes",
+                              "anyOf": [
+                                {
+                                  "type": "number"
+                                },
+                                {
+                                  "type": "null"
+                                }
+                              ]
+                            }
+                          },
+                          "required": [
+                            "milk",
+                            "bread",
+                            "rice",
+                            "eggs",
+                            "cheese",
+                            "chicken_fillets",
+                            "beef_round",
+                            "apples",
+                            "bananas",
+                            "oranges",
+                            "tomatoes",
+                            "potatoes",
+                            "onions",
+                            "lettuce",
+                            "water",
+                            "wine",
+                            "domestic_beer",
+                            "imported_beer",
+                            "cigarettes"
+                          ]
+                        },
+                        "transportation": {
+                          "type": "object",
+                          "properties": {
+                            "one_way_ticket": {
+                              "description": "One way ticket of local public transport",
+                              "anyOf": [
+                                {
+                                  "type": "number"
+                                },
+                                {
+                                  "type": "null"
+                                }
+                              ]
+                            },
+                            "monthly_pass": {
+                              "description": "Monthly pass of local public transport",
+                              "anyOf": [
+                                {
+                                  "type": "number"
+                                },
+                                {
+                                  "type": "null"
+                                }
+                              ]
+                            },
+                            "taxi_start": {
+                              "description": "Taxi start price",
+                              "anyOf": [
+                                {
+                                  "type": "number"
+                                },
+                                {
+                                  "type": "null"
+                                }
+                              ]
+                            },
+                            "taxi_1_mile": {
+                              "description": "Taxi price (1 mile or 1.6 km)",
+                              "anyOf": [
+                                {
+                                  "type": "number"
+                                },
+                                {
+                                  "type": "null"
+                                }
+                              ]
+                            },
+                            "taxi_1_hour_waiting": {
+                              "description": "Taxi price (1 hour waiting)",
+                              "anyOf": [
+                                {
+                                  "type": "number"
+                                },
+                                {
+                                  "type": "null"
+                                }
+                              ]
+                            },
+                            "gasoline": {
+                              "description": "Gasoline (1 gallon or 3.8 l)",
+                              "anyOf": [
+                                {
+                                  "type": "number"
+                                },
+                                {
+                                  "type": "null"
+                                }
+                              ]
+                            },
+                            "compact_car": {
+                              "description": "New car (compact sized)",
+                              "anyOf": [
+                                {
+                                  "type": "number"
+                                },
+                                {
+                                  "type": "null"
+                                }
+                              ]
+                            },
+                            "mid_car": {
+                              "description": "New car (mid-sized)",
+                              "anyOf": [
+                                {
+                                  "type": "number"
+                                },
+                                {
+                                  "type": "null"
+                                }
+                              ]
+                            }
+                          },
+                          "required": [
+                            "one_way_ticket",
+                            "monthly_pass",
+                            "taxi_start",
+                            "taxi_1_mile",
+                            "taxi_1_hour_waiting",
+                            "gasoline",
+                            "compact_car",
+                            "mid_car"
+                          ]
+                        },
+                        "utilities": {
+                          "type": "object",
+                          "properties": {
+                            "basic": {
+                              "description": "Basic utilities (electricity, heating, cooling, water) fee for a mid-sized apartment",
+                              "anyOf": [
+                                {
+                                  "type": "number"
+                                },
+                                {
+                                  "type": "null"
+                                }
+                              ]
+                            },
+                            "mobile": {
+                              "description": "Mobile phone monthly plan with calls and data",
+                              "anyOf": [
+                                {
+                                  "type": "number"
+                                },
+                                {
+                                  "type": "null"
+                                }
+                              ]
+                            },
+                            "internet": {
+                              "description": "Internet monthly plan (Unlimited data, 60 Mbps or higher)",
+                              "anyOf": [
+                                {
+                                  "type": "number"
+                                },
+                                {
+                                  "type": "null"
+                                }
+                              ]
+                            }
+                          },
+                          "required": [
+                            "basic",
+                            "mobile",
+                            "internet"
+                          ]
+                        },
+                        "entertainment": {
+                          "type": "object",
+                          "properties": {
+                            "fitness_club": {
+                              "description": "Monthly membership fee of a fitness club",
+                              "anyOf": [
+                                {
+                                  "type": "number"
+                                },
+                                {
+                                  "type": "null"
+                                }
+                              ]
+                            },
+                            "tennis_court": {
+                              "description": "1 hour of tennis court rental fee",
+                              "anyOf": [
+                                {
+                                  "type": "number"
+                                },
+                                {
+                                  "type": "null"
+                                }
+                              ]
+                            },
+                            "cinema": {
+                              "description": "1 cinema ticket",
+                              "anyOf": [
+                                {
+                                  "type": "number"
+                                },
+                                {
+                                  "type": "null"
+                                }
+                              ]
+                            }
+                          },
+                          "required": [
+                            "fitness_club",
+                            "tennis_court",
+                            "cinema"
+                          ]
+                        },
+                        "education": {
+                          "type": "object",
+                          "properties": {
+                            "preschool": {
+                              "description": "Monthly fee per child for a private full-day preschool",
+                              "anyOf": [
+                                {
+                                  "type": "number"
+                                },
+                                {
+                                  "type": "null"
+                                }
+                              ]
+                            },
+                            "international_primary_school": {
+                              "description": "Annual fee per child for an international primary school",
+                              "anyOf": [
+                                {
+                                  "type": "number"
+                                },
+                                {
+                                  "type": "null"
+                                }
+                              ]
+                            }
+                          },
+                          "required": [
+                            "preschool",
+                            "international_primary_school"
+                          ]
+                        },
+                        "clothing": {
+                          "type": "object",
+                          "properties": {
+                            "jeans": {
+                              "description": "1 pair of mid-tier jeans from a chain store",
+                              "anyOf": [
+                                {
+                                  "type": "number"
+                                },
+                                {
+                                  "type": "null"
+                                }
+                              ]
+                            },
+                            "summer_dress": {
+                              "description": "1 mid-tier summer dress from a chain store",
+                              "anyOf": [
+                                {
+                                  "type": "number"
+                                },
+                                {
+                                  "type": "null"
+                                }
+                              ]
+                            },
+                            "running_shoes": {
+                              "description": "1 pair of mid-tier running shoes",
+                              "anyOf": [
+                                {
+                                  "type": "number"
+                                },
+                                {
+                                  "type": "null"
+                                }
+                              ]
+                            },
+                            "business_shoes": {
+                              "description": "1 pair of mid-tier men's leather business shoes",
+                              "anyOf": [
+                                {
+                                  "type": "number"
+                                },
+                                {
+                                  "type": "null"
+                                }
+                              ]
+                            }
+                          },
+                          "required": [
+                            "jeans",
+                            "summer_dress",
+                            "running_shoes",
+                            "business_shoes"
+                          ]
+                        },
+                        "housing": {
+                          "type": "object",
+                          "properties": {
+                            "rent_city_center_1_bedroom": {
+                              "description": "Price to rent a 1 bedroom apartment in city center",
+                              "anyOf": [
+                                {
+                                  "type": "number"
+                                },
+                                {
+                                  "type": "null"
+                                }
+                              ]
+                            },
+                            "rent_outside_of_center_1_bedroom": {
+                              "description": "Price to rent a 1 bedroom apartment outside of city center",
+                              "anyOf": [
+                                {
+                                  "type": "number"
+                                },
+                                {
+                                  "type": "null"
+                                }
+                              ]
+                            },
+                            "rent_city_center_3_bedrooms": {
+                              "description": "Price to rent a 3 bedroom apartment in city center",
+                              "anyOf": [
+                                {
+                                  "type": "number"
+                                },
+                                {
+                                  "type": "null"
+                                }
+                              ]
+                            },
+                            "rent_outside_of_center_3_bedrooms": {
+                              "description": "Price to rent a 3 bedroom apartment outside of city center",
+                              "anyOf": [
+                                {
+                                  "type": "number"
+                                },
+                                {
+                                  "type": "null"
+                                }
+                              ]
+                            },
+                            "buy_city_center": {
+                              "description": "Price per square feet or 0.09 square meters to buy an apartment in city center",
+                              "anyOf": [
+                                {
+                                  "type": "number"
+                                },
+                                {
+                                  "type": "null"
+                                }
+                              ]
+                            },
+                            "buy_outside_of_center": {
+                              "description": "Price per square feet or 0.09 square meters to buy an apartment outside of city center",
+                              "anyOf": [
+                                {
+                                  "type": "number"
+                                },
+                                {
+                                  "type": "null"
+                                }
+                              ]
+                            }
+                          },
+                          "required": [
+                            "rent_city_center_1_bedroom",
+                            "rent_outside_of_center_1_bedroom",
+                            "rent_city_center_3_bedrooms",
+                            "rent_outside_of_center_3_bedrooms",
+                            "buy_city_center",
+                            "buy_outside_of_center"
+                          ]
+                        },
+                        "income": {
+                          "type": "object",
+                          "properties": {
+                            "average_monthly_net_salary": {
+                              "description": "Average Monthly Net Salary (after tax)",
+                              "anyOf": [
+                                {
+                                  "type": "number"
+                                },
+                                {
+                                  "type": "null"
+                                }
+                              ]
+                            }
+                          },
+                          "required": [
+                            "average_monthly_net_salary"
+                          ]
+                        },
+                        "mortgage": {
+                          "type": "object",
+                          "properties": {
+                            "interest_rate": {
+                              "description": "20 years Mortgage Interest Rate in Percentages (annual rate)",
+                              "anyOf": [
+                                {
+                                  "type": "number"
+                                },
+                                {
+                                  "type": "null"
+                                }
+                              ]
+                            }
+                          },
+                          "required": [
+                            "interest_rate"
+                          ]
+                        }
+                      },
+                      "required": [
+                        "place_id",
+                        "currency_code",
+                        "dining",
+                        "grocery",
+                        "transportation",
+                        "utilities",
+                        "entertainment",
+                        "education",
+                        "clothing",
+                        "housing",
+                        "income",
+                        "mortgage"
+                      ]
+                    }
+                  },
+                  "required": [
+                    "code",
+                    "message",
+                    "data"
+                  ]
+                },
+                "examples": {
+                  "new-york-cost-of-living": {
+                    "summary": "Cost of living data for New York in USD",
+                    "value": {
+                      "code": 0,
+                      "message": "Success",
+                      "data": {
+                        "place_id": "4f0e304e-056b-4a36-9e9a-aaf9abd99249",
+                        "currency_code": "USD",
+                        "dining": {
+                          "inexpensive": 25,
+                          "mid_tier": 147.5,
+                          "mcdonalds": 14,
+                          "domestic_beer": 8,
+                          "imported_beer": 4.15,
+                          "cappuccino": 5.7,
+                          "soft_drink": 3.1,
+                          "water": 2.52
+                        },
+                        "grocery": {
+                          "milk": 5.942467827403482,
+                          "bread": 4.38,
+                          "rice": 3.71,
+                          "eggs": 7.31,
+                          "cheese": 8.07,
+                          "chicken_fillets": 7.11,
+                          "beef_round": 9.31,
+                          "apples": 3.32,
+                          "bananas": 1.13,
+                          "oranges": 2.61,
+                          "tomatoes": 2.71,
+                          "potatoes": 1.7,
+                          "onions": 1.81,
+                          "lettuce": 3.12,
+                          "water": 2.52,
+                          "wine": 18,
+                          "domestic_beer": 3.6,
+                          "imported_beer": null,
+                          "cigarettes": 20
+                        },
+                        "transportation": {
+                          "one_way_ticket": 2.9,
+                          "monthly_pass": 133,
+                          "taxi_start": 5,
+                          "taxi_1_mile": 3.5,
+                          "taxi_1_hour_waiting": 42,
+                          "gasoline": 3.4443603330809993,
+                          "compact_car": 36344.69,
+                          "mid_car": 27448.36
+                        },
+                        "utilities": {
+                          "basic": 191.02,
+                          "mobile": 61,
+                          "internet": 65.54
+                        },
+                        "entertainment": {
+                          "fitness_club": 128.57,
+                          "tennis_court": 58.33,
+                          "cinema": 22
+                        },
+                        "education": {
+                          "preschool": 3366.67,
+                          "international_primary_school": 58285.71
+                        },
+                        "clothing": {
+                          "jeans": 66.67,
+                          "summer_dress": 51.85,
+                          "running_shoes": 117.04,
+                          "business_shoes": 166
+                        },
+                        "housing": {
+                          "rent_city_center_1_bedroom": 4142.86,
+                          "rent_city_center_3_bedrooms": 7947.73,
+                          "rent_outside_of_center_1_bedroom": 2465,
+                          "rent_outside_of_center_3_bedrooms": 5104.35,
+                          "buy_city_center": 1496.15,
+                          "buy_outside_of_center": 1028.98
+                        },
+                        "income": {
+                          "average_monthly_net_salary": 5671.65
+                        },
+                        "mortgage": {
+                          "interest_rate": 6.44
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "in": "query",
+            "name": "place_id",
+            "schema": {
+              "type": "string",
+              "format": "uuid",
+              "pattern": "^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$"
+            },
+            "required": true,
+            "description": "The id of the place"
+          },
+          {
+            "in": "query",
+            "name": "currency_code",
+            "schema": {
+              "type": "string",
+              "minLength": 3,
+              "maxLength": 3
+            },
+            "description": "The currency code to display"
+          }
+        ]
+      }
+    },
+    "/place/query/general-info": {
+      "get": {
+        "operationId": "getPlaceQueryGeneral-info",
+        "description": "Query general information for a place",
+        "responses": {
+          "200": {
+            "description": "Place information retrieved successfully",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "code": {
+                      "type": "number",
+                      "const": 0
+                    },
+                    "message": {
+                      "type": "string",
+                      "const": "Success"
+                    },
+                    "data": {
+                      "type": "object",
+                      "properties": {
+                        "name": {
+                          "description": "The name of the place",
+                          "type": "string"
+                        },
+                        "aliases": {
+                          "description": "The aliases of the place in different cultures and languages",
+                          "type": "array",
+                          "items": {
+                            "type": "string"
+                          }
+                        },
+                        "country_code": {
+                          "description": "The ISO 3166-1 alpha-2 country code of the place",
+                          "type": "string",
+                          "minLength": 2,
+                          "maxLength": 2
+                        },
+                        "latitude": {
+                          "description": "The latitude of the place",
+                          "type": "number"
+                        },
+                        "longitude": {
+                          "description": "The longitude of the place",
+                          "type": "number"
+                        },
+                        "population": {
+                          "description": "The population of the place",
+                          "type": "string"
+                        },
+                        "elevation": {
+                          "description": "The elevation of the place",
+                          "type": "integer",
+                          "minimum": -9007199254740991,
+                          "maximum": 9007199254740991
+                        },
+                        "place_id": {
+                          "type": "string",
+                          "format": "uuid",
+                          "pattern": "^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$"
+                        }
+                      },
+                      "required": [
+                        "name",
+                        "aliases",
+                        "country_code",
+                        "latitude",
+                        "longitude",
+                        "population",
+                        "elevation",
+                        "place_id"
+                      ]
+                    }
+                  },
+                  "required": [
+                    "code",
+                    "message",
+                    "data"
+                  ]
+                },
+                "examples": {
+                  "new-york-general-info": {
+                    "summary": "General information for New York",
+                    "value": {
+                      "code": 0,
+                      "message": "Success",
+                      "data": {
+                        "place_id": "4f0e304e-056b-4a36-9e9a-aaf9abd99249",
+                        "name": "New York City",
+                        "aliases": [
+                          "Aebura",
+                          "Bandar Raya New York",
+                          "Big Apple",
+                          "Cathair Nua-Eabhrac",
+                          "City of New York",
+                          "Eabhraig Nuadh",
+                          "Efrog Newydd",
+                          "Evrek Nowydh",
+                          "Ga-no-no",
+                          "Kanon:no",
+                          "Kanono",
+                          "Kanón:no",
+                          "Kota New York",
+                          "Lungsod ng New York",
+                          "N'ju-Jork",
+                          "NY",
+                          "NYC",
+                          "Nea Yorke",
+                          "Nei Yarrick Schtadt",
+                          "Neu Amsterdam",
+                          "Neu Jorck",
+                          "New Amsterdam",
+                          "New Orange",
+                          "New Yorc",
+                          "New York",
+                          "New York City",
+                          "New York Stad",
+                          "New York borg",
+                          "New York kenti",
+                          "New York-borg",
+                          "New Yorke",
+                          "New Yorku",
+                          "Niujorkas",
+                          "Niw Eorkʻ",
+                          "Nju Jork",
+                          "Njujork",
+                          "Nouvelle Yorck",
+                          "Nouvieau York",
+                          "Nov-Jorko",
+                          "Nova Amsterda",
+                          "Nova Iorque",
+                          "Nova York",
+                          "Nova-York",
+                          "Novjorko",
+                          "Novum Eboracum",
+                          "Nowy Jork",
+                          "Nua-Eabhrac",
+                          "Nueva York",
+                          "Nujorka",
+                          "Nyja Jorvik",
+                          "Nyu York Shehiri",
+                          "Nyu Yorkʻ",
+                          "Nòva York",
+                          "Nýja Jórvík",
+                          "Thanh pho New York",
+                          "The Big Apple",
+                          "Thành phố New York",
+                          "York Berri",
+                          "manhattan",
+                          "n'yuyorka",
+                          "ni'u iyarka siti",
+                          "niu yue",
+                          "niu yue shi",
+                          "niyuyark nakaram",
+                          "nkhr niwyxrk",
+                          "nyuyog",
+                          "nyuyog si",
+                          "nyuyoku",
+                          "nyw ywrq",
+                          "nywywrk",
+                          "Ņujorka",
+                          "Νέα Υόρκη",
+                          "Њу Јорк",
+                          "Њујорк",
+                          "Нью-Ёрк",
+                          "Нью-Йорк",
+                          "Ню Йорк",
+                          "Նիւ Եորք",
+                          "Նյու Յորք",
+                          "ניו יארק",
+                          "ניו יורק",
+                          "ניו־יאָרק",
+                          "نيويورك",
+                          "نیویارک شہر",
+                          "نیویورک",
+                          "न्यूयॉर्क",
+                          "নিউ ইয়র্ক সিটি",
+                          "நியூயார்க் நகரம்",
+                          "นครนิวยอร์ก",
+                          "ნიუ-იორკი",
+                          "ニューヨーク",
+                          "マンハッタン",
+                          "紐約",
+                          "紐約市",
+                          "뉴욕",
+                          "뉴욕 시"
+                        ],
+                        "country_code": "US",
+                        "latitude": 40.71427,
+                        "longitude": -74.00597,
+                        "population": "8804190",
+                        "elevation": 57
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "in": "query",
+            "name": "place_id",
+            "schema": {
+              "type": "string",
+              "format": "uuid",
+              "pattern": "^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$"
+            },
+            "required": true,
+            "description": "The id of the place"
+          }
+        ]
+      }
+    }
+  }
+}

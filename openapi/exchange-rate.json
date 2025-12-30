@@ -1,0 +1,305 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "Resettle Exchange Rate API",
+    "description": "",
+    "version": "1",
+    "termsOfService": "https://resettle.ai/terms",
+    "contact": {
+      "email": "contact@resettle.ai"
+    },
+    "license": {
+      "name": "Apache-2.0",
+      "url": "http://www.apache.org/licenses/LICENSE-2.0.html"
+    }
+  },
+  "servers": [
+    {
+      "url": "https://resettle-exchange-rate-api.p.rapidapi.com/exchange-rate"
+    }
+  ],
+  "externalDocs": {
+    "description": "Try our APIs out",
+    "url": "https://resettle.ai/dev"
+  },
+  "security": [
+    {
+      "RapidAuth": []
+    }
+  ],
+  "components": {
+    "securitySchemes": {
+      "RapidAuth": {
+        "type": "apiKey",
+        "in": "header",
+        "description": "If you don't currently have an API key, you can visit https://resettle.ai/dev to acquire a free one",
+        "name": "X-RapidAPI-Key"
+      }
+    },
+    "parameters": {
+      "RapidHost": {
+        "name": "X-RapidAPI-Host",
+        "in": "header",
+        "required": true,
+        "schema": {
+          "type": "string",
+          "enum": [
+            "resettle-exchange-rate-api.p.rapidapi.com"
+          ]
+        }
+      }
+    }
+  },
+  "paths": {
+    "/exchange-rate/query": {
+      "get": {
+        "operationId": "getExchange-rateQuery",
+        "description": "Retrieve exchange rates",
+        "responses": {
+          "200": {
+            "description": "Exchange rates retrieved successfully",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "code": {
+                      "type": "number",
+                      "const": 0
+                    },
+                    "message": {
+                      "type": "string",
+                      "const": "Success"
+                    },
+                    "data": {
+                      "type": "object",
+                      "propertyNames": {
+                        "description": "The currency code",
+                        "type": "string",
+                        "minLength": 3,
+                        "maxLength": 3
+                      },
+                      "additionalProperties": {
+                        "description": "How much of the currency is equivalent to 1 base currency",
+                        "type": "number"
+                      }
+                    }
+                  },
+                  "required": [
+                    "code",
+                    "message",
+                    "data"
+                  ]
+                },
+                "examples": {
+                  "exchange-rates": {
+                    "summary": "Exchange rates to USD of a random day",
+                    "value": {
+                      "code": 0,
+                      "message": "Success",
+                      "data": {
+                        "AED": 3.672991,
+                        "AFN": 65.000285,
+                        "ALL": 82.902616,
+                        "AMD": 382.620401,
+                        "ANG": 1.789982,
+                        "AOA": 916.999407,
+                        "ARS": 1453.000387,
+                        "AUD": 1.512425,
+                        "AWG": 1.8,
+                        "AZN": 1.670907,
+                        "BAM": 1.680226,
+                        "BBD": 2.014012,
+                        "BDT": 122.241218,
+                        "BGN": 1.68006,
+                        "BHD": 0.377007,
+                        "BIF": 2965,
+                        "BMD": 1,
+                        "BND": 1.294851,
+                        "BOB": 6.909675,
+                        "BRL": 5.345265,
+                        "BSD": 1.000004,
+                        "BTN": 88.152441,
+                        "BWP": 13.310023,
+                        "BYN": 3.408004,
+                        "BYR": 19600,
+                        "BZD": 2.011151,
+                        "CAD": 1.38958,
+                        "CDF": 2226.000279,
+                        "CHF": 0.795899,
+                        "CLF": 0.023966,
+                        "CLP": 940.250239,
+                        "CNH": 7.08932,
+                        "CNY": 7.09905,
+                        "COP": 3874.9,
+                        "CRC": 501.376724,
+                        "CUC": 1,
+                        "CUP": 26.5,
+                        "CVE": 94.924953,
+                        "CZK": 20.875851,
+                        "DJF": 178.06854,
+                        "DKK": 6.40332,
+                        "DOP": 64.250038,
+                        "DZD": 129.470447,
+                        "EGP": 47.306301,
+                        "ERN": 15,
+                        "ETB": 152.950219,
+                        "EUR": 0.85738,
+                        "FJD": 2.2569,
+                        "FKP": 0.753199,
+                        "GBP": 0.75515,
+                        "GEL": 2.719933,
+                        "GGP": 0.753199,
+                        "GHS": 10.875008,
+                        "GIP": 0.753199,
+                        "GMD": 72.498647,
+                        "GNF": 8677.999844,
+                        "GTQ": 7.659827,
+                        "GYD": 209.211419,
+                        "HKD": 7.77054,
+                        "HNL": 26.297733,
+                        "HRK": 6.462798,
+                        "HTG": 130.842486,
+                        "HUF": 332.919793,
+                        "IDR": 16535,
+                        "ILS": 3.2513,
+                        "IMP": 0.753199,
+                        "INR": 88.34855,
+                        "IQD": 1310,
+                        "IRR": 42074.999696,
+                        "ISK": 123.307056,
+                        "JEP": 0.753199,
+                        "JMD": 159.801033,
+                        "JOD": 0.709027,
+                        "JPY": 151.9885,
+                        "KES": 129.1947,
+                        "KGS": 87.449826,
+                        "KHR": 4025.000294,
+                        "KMF": 422.000329,
+                        "KPW": 899.995401,
+                        "KRW": 1420.920168,
+                        "KWD": 0.30667,
+                        "KYD": 0.833326,
+                        "KZT": 528.576154,
+                        "LAK": 21695.000234,
+                        "LBP": 89550.000053,
+                        "LKR": 304.447556,
+                        "LRD": 183.450166,
+                        "LSL": 17.160184,
+                        "LTL": 2.95274,
+                        "LVL": 0.60489,
+                        "LYD": 5.435028,
+                        "MAD": 9.21098,
+                        "MDL": 16.994699,
+                        "MGA": 4522.000142,
+                        "MKD": 52.853932,
+                        "MMK": 2099.422639,
+                        "MNT": 3592.69484,
+                        "MOP": 8.003883,
+                        "MRU": 40.070032,
+                        "MUR": 45.401083,
+                        "MVR": 15.324357,
+                        "MWK": 1736.500496,
+                        "MXN": 18.41984,
+                        "MYR": 4.188502,
+                        "MZN": 63.89747,
+                        "NAD": 17.159591,
+                        "NGN": 1455.680047,
+                        "NIO": 36.759882,
+                        "NOK": 9.959797,
+                        "NPR": 141.043561,
+                        "NZD": 1.724703,
+                        "OMR": 0.384503,
+                        "PAB": 1.000009,
+                        "PEN": 3.3925,
+                        "PGK": 4.201501,
+                        "PHP": 58.691961,
+                        "PKR": 281.00963,
+                        "PLN": 3.634495,
+                        "PYG": 7103.062272,
+                        "QAR": 3.641203,
+                        "RON": 4.360991,
+                        "RSD": 100.522048,
+                        "RUB": 80.002744,
+                        "RWF": 1449.5,
+                        "SAR": 3.750365,
+                        "SBD": 8.223823,
+                        "SCR": 14.680253,
+                        "SDG": 601.498572,
+                        "SEK": 9.35595,
+                        "SGD": 1.29293,
+                        "SHP": 0.750259,
+                        "SLE": 23.210326,
+                        "SLL": 20969.499529,
+                        "SOS": 601.497895,
+                        "SRD": 38.643979,
+                        "STD": 20697.981008,
+                        "STN": 21.45,
+                        "SVC": 8.749925,
+                        "SYP": 11058.494793,
+                        "SZL": 17.159596,
+                        "THB": 32.301498,
+                        "TJS": 9.209787,
+                        "TMT": 3.5,
+                        "TND": 2.911496,
+                        "TOP": 2.342101,
+                        "TRY": 41.95139,
+                        "TTD": 6.773225,
+                        "TWD": 30.569501,
+                        "TZS": 2459.92897,
+                        "UAH": 42.051434,
+                        "UGX": 3466.509736,
+                        "USD": 1,
+                        "UYU": 39.85361,
+                        "UZS": 12025.00004,
+                        "VES": 217.89725,
+                        "VND": 26336,
+                        "VUV": 121.771567,
+                        "WST": 2.795608,
+                        "XAF": 563.539362,
+                        "XAG": 0.020755,
+                        "XAU": 0.00025,
+                        "XCD": 2.70255,
+                        "XCG": 1.802241,
+                        "XDR": 0.700447,
+                        "XOF": 562.507442,
+                        "XPF": 102.675021,
+                        "YER": 238.592558,
+                        "ZAR": 17.10563,
+                        "ZMK": 9001.200559,
+                        "ZMW": 21.974416,
+                        "ZWL": 321.999592
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "in": "query",
+            "name": "currency",
+            "schema": {
+              "type": "string",
+              "minLength": 3,
+              "maxLength": 3
+            },
+            "description": "The base currency, default to USD"
+          },
+          {
+            "in": "query",
+            "name": "date",
+            "schema": {
+              "type": "string",
+              "format": "date",
+              "pattern": "^(?:(?:\\d\\d[2468][048]|\\d\\d[13579][26]|\\d\\d0[48]|[02468][048]00|[13579][26]00)-02-29|\\d{4}-(?:(?:0[13578]|1[02])-(?:0[1-9]|[12]\\d|3[01])|(?:0[469]|11)-(?:0[1-9]|[12]\\d|30)|(?:02)-(?:0[1-9]|1\\d|2[0-8])))$"
+            },
+            "description": "The date in UTC that the exchange rate took effect"
+          }
+        ]
+      }
+    }
+  }
+}

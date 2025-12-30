@@ -1,0 +1,698 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "Resettle Skill Taxonomy API",
+    "description": "",
+    "version": "1",
+    "termsOfService": "https://resettle.ai/terms",
+    "contact": {
+      "email": "contact@resettle.ai"
+    },
+    "license": {
+      "name": "Apache-2.0",
+      "url": "http://www.apache.org/licenses/LICENSE-2.0.html"
+    }
+  },
+  "servers": [
+    {
+      "url": "https://resettle-skill-api.p.rapidapi.com/skill"
+    }
+  ],
+  "externalDocs": {
+    "description": "Try our APIs out",
+    "url": "https://resettle.ai/dev"
+  },
+  "security": [
+    {
+      "RapidAuth": []
+    }
+  ],
+  "components": {
+    "securitySchemes": {
+      "RapidAuth": {
+        "type": "apiKey",
+        "in": "header",
+        "description": "If you don't currently have an API key, you can visit https://resettle.ai/dev to acquire a free one",
+        "name": "X-RapidAPI-Key"
+      }
+    },
+    "parameters": {
+      "RapidHost": {
+        "name": "X-RapidAPI-Host",
+        "in": "header",
+        "required": true,
+        "schema": {
+          "type": "string",
+          "enum": [
+            "resettle-skill-api.p.rapidapi.com"
+          ]
+        }
+      }
+    }
+  },
+  "paths": {
+    "/skill/categories": {
+      "get": {
+        "operationId": "getSkillCategories",
+        "description": "Get all categories of the skill taxonomy",
+        "responses": {
+          "200": {
+            "description": "Categories fetched successfully",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "code": {
+                      "type": "number",
+                      "const": 0
+                    },
+                    "message": {
+                      "type": "string",
+                      "const": "Success"
+                    },
+                    "data": {
+                      "type": "array",
+                      "items": {
+                        "type": "string"
+                      }
+                    }
+                  },
+                  "required": [
+                    "code",
+                    "message",
+                    "data"
+                  ]
+                },
+                "examples": {
+                  "categories": {
+                    "summary": "Categories of all skills",
+                    "value": {
+                      "code": 0,
+                      "message": "Success",
+                      "data": [
+                        "Public Safety and National Security",
+                        "Business",
+                        "Maintenance, Repair, and Facility Services",
+                        "Analysis"
+                      ]
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/skill/sub-categories": {
+      "get": {
+        "operationId": "getSkillSub-categories",
+        "description": "Get all sub-categories under a category of the skill taxonomy",
+        "responses": {
+          "200": {
+            "description": "Sub-categories fetched successfully",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "code": {
+                      "type": "number",
+                      "const": 0
+                    },
+                    "message": {
+                      "type": "string",
+                      "const": "Success"
+                    },
+                    "data": {
+                      "type": "array",
+                      "items": {
+                        "type": "string"
+                      }
+                    }
+                  },
+                  "required": [
+                    "code",
+                    "message",
+                    "data"
+                  ]
+                },
+                "examples": {
+                  "sub-categories": {
+                    "summary": "Sub categories of category `Analysis`",
+                    "value": {
+                      "code": 0,
+                      "message": "Success",
+                      "data": [
+                        "Business Intelligence",
+                        "Business Intelligence Software",
+                        "Data Analysis",
+                        "Data Science"
+                      ]
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "in": "query",
+            "name": "category",
+            "schema": {
+              "type": "string"
+            },
+            "required": true,
+            "description": "The category of the sub category"
+          }
+        ]
+      }
+    },
+    "/skill/query": {
+      "get": {
+        "operationId": "getSkillQuery",
+        "description": "Query skills",
+        "responses": {
+          "200": {
+            "description": "Skills retrieved successfully",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "code": {
+                      "type": "number",
+                      "const": 0
+                    },
+                    "message": {
+                      "type": "string",
+                      "const": "Success"
+                    },
+                    "data": {
+                      "type": "object",
+                      "properties": {
+                        "metadata": {
+                          "type": "object",
+                          "properties": {
+                            "limit": {
+                              "type": "integer",
+                              "minimum": -9007199254740991,
+                              "maximum": 9007199254740991
+                            },
+                            "order_by": {
+                              "type": "string",
+                              "enum": [
+                                "id"
+                              ]
+                            },
+                            "order_by_direction": {
+                              "type": "string",
+                              "enum": [
+                                "asc",
+                                "desc"
+                              ]
+                            },
+                            "cursor": {
+                              "anyOf": [
+                                {
+                                  "type": "string"
+                                },
+                                {
+                                  "type": "null"
+                                }
+                              ]
+                            },
+                            "next_cursor": {
+                              "anyOf": [
+                                {
+                                  "type": "string"
+                                },
+                                {
+                                  "type": "null"
+                                }
+                              ]
+                            }
+                          },
+                          "required": [
+                            "limit",
+                            "order_by",
+                            "order_by_direction",
+                            "cursor",
+                            "next_cursor"
+                          ]
+                        },
+                        "data": {
+                          "type": "array",
+                          "items": {
+                            "type": "object",
+                            "properties": {
+                              "id": {
+                                "type": "string",
+                                "format": "uuid",
+                                "pattern": "^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$"
+                              },
+                              "name": {
+                                "description": "The name of the skill",
+                                "type": "string"
+                              },
+                              "category": {
+                                "description": "The top level category of the skill",
+                                "type": "string"
+                              },
+                              "sub_category": {
+                                "description": "The secondary level category of the skill",
+                                "type": "string"
+                              }
+                            },
+                            "required": [
+                              "id",
+                              "name",
+                              "category",
+                              "sub_category"
+                            ]
+                          }
+                        }
+                      },
+                      "required": [
+                        "metadata",
+                        "data"
+                      ]
+                    }
+                  },
+                  "required": [
+                    "code",
+                    "message",
+                    "data"
+                  ]
+                },
+                "examples": {
+                  "skills-under-category-analysis-sub-category-statistics": {
+                    "summary": "The skills under category `Analysis` and sub-category `Statistics`",
+                    "value": {
+                      "code": 0,
+                      "message": "Success",
+                      "data": {
+                        "data": [
+                          {
+                            "category": "Analysis",
+                            "id": "ffb2c251-bfe9-4ade-928d-fe782931597d",
+                            "name": "Quantile",
+                            "sub_category": "Statistics"
+                          },
+                          {
+                            "category": "Analysis",
+                            "id": "ff7863ea-e6fc-4184-9e74-7fe91fc787d4",
+                            "name": "Computational Statistics",
+                            "sub_category": "Statistics"
+                          },
+                          {
+                            "category": "Analysis",
+                            "id": "fee796e5-d087-40a7-ac68-6c45eb144eef",
+                            "name": "Box-Jenkins",
+                            "sub_category": "Statistics"
+                          }
+                        ],
+                        "metadata": {
+                          "cursor": null,
+                          "limit": 100,
+                          "next_cursor": "4cd0d086-4d0b-4120-9047-3d0fe7d4ce60",
+                          "order_by": "id",
+                          "order_by_direction": "desc"
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "in": "query",
+            "name": "category",
+            "schema": {
+              "type": "string"
+            },
+            "description": "The category of the skills to search from"
+          },
+          {
+            "in": "query",
+            "name": "sub_category",
+            "schema": {
+              "type": "string"
+            },
+            "description": "The sub category of the skills to search from, must be used alongside with `category`"
+          },
+          {
+            "in": "query",
+            "name": "name",
+            "schema": {
+              "type": "string"
+            },
+            "description": "The name of the skill"
+          },
+          {
+            "in": "query",
+            "name": "cursor",
+            "schema": {
+              "type": "string"
+            },
+            "description": "The identifier of the page"
+          },
+          {
+            "in": "query",
+            "name": "limit",
+            "schema": {
+              "type": "integer",
+              "minimum": 1,
+              "maximum": 100
+            },
+            "description": "The max items to retrieve, default to 100"
+          }
+        ]
+      }
+    },
+    "/skill/search": {
+      "get": {
+        "operationId": "getSkillSearch",
+        "description": "Search skills",
+        "responses": {
+          "200": {
+            "description": "Skills found successfully",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "code": {
+                      "type": "number",
+                      "const": 0
+                    },
+                    "message": {
+                      "type": "string",
+                      "const": "Success"
+                    },
+                    "data": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "id": {
+                            "type": "string",
+                            "format": "uuid",
+                            "pattern": "^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$"
+                          },
+                          "name": {
+                            "description": "The name of the skill",
+                            "type": "string"
+                          },
+                          "category": {
+                            "description": "The top level category of the skill",
+                            "type": "string"
+                          },
+                          "sub_category": {
+                            "description": "The secondary level category of the skill",
+                            "type": "string"
+                          }
+                        },
+                        "required": [
+                          "id",
+                          "name",
+                          "category",
+                          "sub_category"
+                        ]
+                      }
+                    }
+                  },
+                  "required": [
+                    "code",
+                    "message",
+                    "data"
+                  ]
+                },
+                "examples": {
+                  "typescript": {
+                    "summary": "Search result of `TypeScript`",
+                    "value": {
+                      "code": 0,
+                      "message": "Success",
+                      "data": [
+                        {
+                          "category": "Information Technology",
+                          "id": "e1096c39-6ee2-41b8-805e-b82e4d5574a4",
+                          "name": "TypeScript",
+                          "sub_category": "Scripting Languages"
+                        }
+                      ]
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "in": "query",
+            "name": "category",
+            "schema": {
+              "type": "string"
+            },
+            "description": "The category of the skills to search from"
+          },
+          {
+            "in": "query",
+            "name": "sub_category",
+            "schema": {
+              "type": "string"
+            },
+            "description": "The sub category of the skills to search from, must be used alongside with `category`"
+          },
+          {
+            "in": "query",
+            "name": "q",
+            "schema": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 100
+            },
+            "required": true,
+            "description": "The searched text"
+          },
+          {
+            "in": "query",
+            "name": "fuzzy",
+            "schema": {
+              "type": "string"
+            },
+            "description": "Whether to perform a fuzzy match or exact text match"
+          },
+          {
+            "in": "query",
+            "name": "limit",
+            "schema": {
+              "type": "integer",
+              "minimum": 1,
+              "maximum": 100
+            },
+            "description": "The max items to retrieve, default to 100"
+          }
+        ]
+      }
+    },
+    "/skill/changes": {
+      "get": {
+        "operationId": "getSkillChanges",
+        "description": "Get skill changes",
+        "responses": {
+          "200": {
+            "description": "Skill changes fetched successfully",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "code": {
+                      "type": "number",
+                      "const": 0
+                    },
+                    "message": {
+                      "type": "string",
+                      "const": "Success"
+                    },
+                    "data": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "type": {
+                            "description": "The type of the skill change, can be one of add, remove, merge or rename",
+                            "type": "string",
+                            "enum": [
+                              "add",
+                              "remove",
+                              "merge",
+                              "rename"
+                            ]
+                          },
+                          "details": {
+                            "description": "The details of the skill change, its content depends on the type of the skill change",
+                            "oneOf": [
+                              {
+                                "type": "object",
+                                "properties": {
+                                  "type": {
+                                    "type": "string",
+                                    "const": "add"
+                                  },
+                                  "id": {
+                                    "type": "string",
+                                    "format": "uuid",
+                                    "pattern": "^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$"
+                                  },
+                                  "name": {
+                                    "type": "string"
+                                  }
+                                },
+                                "required": [
+                                  "type",
+                                  "id",
+                                  "name"
+                                ]
+                              },
+                              {
+                                "type": "object",
+                                "properties": {
+                                  "type": {
+                                    "type": "string",
+                                    "const": "remove"
+                                  },
+                                  "id": {
+                                    "type": "string",
+                                    "format": "uuid",
+                                    "pattern": "^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$"
+                                  }
+                                },
+                                "required": [
+                                  "type",
+                                  "id"
+                                ]
+                              },
+                              {
+                                "type": "object",
+                                "properties": {
+                                  "type": {
+                                    "type": "string",
+                                    "const": "merge"
+                                  },
+                                  "from_id": {
+                                    "type": "string",
+                                    "format": "uuid",
+                                    "pattern": "^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$"
+                                  },
+                                  "to_id": {
+                                    "type": "string",
+                                    "format": "uuid",
+                                    "pattern": "^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$"
+                                  }
+                                },
+                                "required": [
+                                  "type",
+                                  "from_id",
+                                  "to_id"
+                                ]
+                              },
+                              {
+                                "type": "object",
+                                "properties": {
+                                  "type": {
+                                    "type": "string",
+                                    "const": "rename"
+                                  },
+                                  "id": {
+                                    "type": "string",
+                                    "format": "uuid",
+                                    "pattern": "^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$"
+                                  },
+                                  "from": {
+                                    "type": "string"
+                                  },
+                                  "to": {
+                                    "type": "string"
+                                  }
+                                },
+                                "required": [
+                                  "type",
+                                  "id",
+                                  "from",
+                                  "to"
+                                ]
+                              }
+                            ]
+                          }
+                        },
+                        "required": [
+                          "type",
+                          "details"
+                        ]
+                      }
+                    }
+                  },
+                  "required": [
+                    "code",
+                    "message",
+                    "data"
+                  ]
+                },
+                "examples": {
+                  "skills-changes": {
+                    "summary": "Latest skill changes",
+                    "value": {
+                      "code": 0,
+                      "message": "Success",
+                      "data": [
+                        {
+                          "type": "add",
+                          "details": {
+                            "id": "e1096c39-6ee2-41b8-805e-b82e4d5574a4",
+                            "name": "TypeScript"
+                          }
+                        }
+                      ]
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "in": "query",
+            "name": "year",
+            "schema": {
+              "type": "integer",
+              "minimum": 2025,
+              "maximum": 9999
+            },
+            "description": "The year when the changes became effective"
+          },
+          {
+            "in": "query",
+            "name": "month",
+            "schema": {
+              "type": "integer",
+              "minimum": 1,
+              "maximum": 12
+            },
+            "required": true,
+            "description": "The month when the changes took effect"
+          }
+        ]
+      }
+    }
+  }
+}

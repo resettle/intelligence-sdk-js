@@ -29,7 +29,7 @@ You can view all the specifications at `openapi/**.json`.
 ## Related Links
 
 - [API Documentation](https://resettle.github.io/doc)
-- [Website](https://resettle.ai)
+- [Website](https://resettle.ai/dev)
 
 ## License
 

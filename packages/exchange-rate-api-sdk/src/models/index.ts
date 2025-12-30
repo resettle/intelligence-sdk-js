@@ -22,4 +22,4 @@
  * SOFTWARE.
  */
 
-export * from './get-exchange-rate-query200-response'
+export * from './GetExchangeRateQuery200Response'

@@ -1,5 +1,3 @@
-export * from './get-occupation-crosswalk-from-parameter'
-export * from './get-occupation-crosswalk-from-parameter-any-of'
 /*
  * MIT License
  *
@@ -23,8 +21,11 @@ export * from './get-occupation-crosswalk-from-parameter-any-of'
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
  */
-export * from './get-occupation-crosswalk200-response'
-export * from './get-occupation-crosswalk200-response-data-inner'
-export * from './get-occupation-query200-response'
-export * from './get-occupation-query200-response-data'
-export * from './get-occupation-query200-response-data-metadata'
+
+export * from './GetOccupationCrosswalk200Response'
+export * from './GetOccupationCrosswalk200ResponseDataInner'
+export * from './GetOccupationCrosswalkFromParameter'
+export * from './GetOccupationCrosswalkFromParameterAnyOf'
+export * from './GetOccupationQuery200Response'
+export * from './GetOccupationQuery200ResponseData'
+export * from './GetOccupationQuery200ResponseDataMetadata'

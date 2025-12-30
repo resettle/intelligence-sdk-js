@@ -64,12 +64,12 @@
                   "type": "object",
                   "properties": {
                     "code": {
-                      "type": "number",
-                      "const": 0
+                      "type": "integer",
+                      "minimum": -9007199254740991,
+                      "maximum": 9007199254740991
                     },
                     "message": {
-                      "type": "string",
-                      "const": "Success"
+                      "type": "string"
                     },
                     "data": {
                       "type": "array",
@@ -227,12 +227,12 @@
                   "type": "object",
                   "properties": {
                     "code": {
-                      "type": "number",
-                      "const": 0
+                      "type": "integer",
+                      "minimum": -9007199254740991,
+                      "maximum": 9007199254740991
                     },
                     "message": {
-                      "type": "string",
-                      "const": "Success"
+                      "type": "string"
                     },
                     "data": {
                       "type": "object",
@@ -436,12 +436,12 @@
                   "type": "object",
                   "properties": {
                     "code": {
-                      "type": "number",
-                      "const": 0
+                      "type": "integer",
+                      "minimum": -9007199254740991,
+                      "maximum": 9007199254740991
                     },
                     "message": {
-                      "type": "string",
-                      "const": "Success"
+                      "type": "string"
                     },
                     "data": {
                       "type": "array",

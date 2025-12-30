@@ -22,4 +22,4 @@
  * SOFTWARE.
  */
 
-export * from './default-api'
+export * from './DefaultApi'

@@ -1,0 +1,17 @@
+name: Sync Repository to GitLab
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Sync to GitLab
+        uses: keninkujovic/gitlab-sync@2.1.0
+        with:
+          gitlab_url: https://gitlab.com/resettle-ai/intelligence-sdk-js.git
+          username: sorcereradrian
+          gitlab_pat: ${{ secrets.GITLAB_SYNC_TOKEN }}

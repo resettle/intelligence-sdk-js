@@ -254,16 +254,16 @@
                                 "pattern": "^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$"
                               },
                               "name": {
-                                "description": "The name of the skill",
-                                "type": "string"
+                                "type": "string",
+                                "description": "The name of the skill"
                               },
                               "category": {
-                                "description": "The top level category of the skill",
-                                "type": "string"
+                                "type": "string",
+                                "description": "The top level category of the skill"
                               },
                               "sub_category": {
-                                "description": "The secondary level category of the skill",
-                                "type": "string"
+                                "type": "string",
+                                "description": "The secondary level category of the skill"
                               }
                             },
                             "required": [
@@ -406,16 +406,16 @@
                             "pattern": "^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$"
                           },
                           "name": {
-                            "description": "The name of the skill",
-                            "type": "string"
+                            "type": "string",
+                            "description": "The name of the skill"
                           },
                           "category": {
-                            "description": "The top level category of the skill",
-                            "type": "string"
+                            "type": "string",
+                            "description": "The top level category of the skill"
                           },
                           "sub_category": {
-                            "description": "The secondary level category of the skill",
-                            "type": "string"
+                            "type": "string",
+                            "description": "The secondary level category of the skill"
                           }
                         },
                         "required": [
@@ -529,17 +529,16 @@
                         "type": "object",
                         "properties": {
                           "type": {
-                            "description": "The type of the skill change, can be one of add, remove, merge or rename",
                             "type": "string",
                             "enum": [
                               "add",
                               "remove",
                               "merge",
                               "rename"
-                            ]
+                            ],
+                            "description": "The type of the skill change, can be one of add, remove, merge or rename"
                           },
                           "details": {
-                            "description": "The details of the skill change, its content depends on the type of the skill change",
                             "oneOf": [
                               {
                                 "type": "object",
@@ -631,7 +630,8 @@
                                   "to"
                                 ]
                               }
-                            ]
+                            ],
+                            "description": "The details of the skill change, its content depends on the type of the skill change"
                           }
                         },
                         "required": [

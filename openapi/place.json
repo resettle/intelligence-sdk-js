@@ -77,15 +77,15 @@
                         "type": "object",
                         "properties": {
                           "name": {
-                            "description": "The name of the place",
-                            "type": "string"
+                            "type": "string",
+                            "description": "The name of the place"
                           },
                           "aliases": {
-                            "description": "The aliases of the place in different cultures and languages",
                             "type": "array",
                             "items": {
                               "type": "string"
-                            }
+                            },
+                            "description": "The aliases of the place in different cultures and languages"
                           },
                           "country_code": {
                             "description": "The ISO 3166-1 alpha-2 country code of the place",
@@ -99,7 +99,6 @@
                             "pattern": "^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$"
                           },
                           "scopes": {
-                            "description": "Valid scopes of the place",
                             "type": "array",
                             "items": {
                               "type": "string",
@@ -107,7 +106,8 @@
                                 "cost-of-living",
                                 "general-info"
                               ]
-                            }
+                            },
+                            "description": "Valid scopes of the place"
                           }
                         },
                         "required": [
@@ -340,7 +340,6 @@
                           "type": "object",
                           "properties": {
                             "inexpensive": {
-                              "description": "A meal at an inexpensive restaurant",
                               "anyOf": [
                                 {
                                   "type": "number"
@@ -348,10 +347,10 @@
                                 {
                                   "type": "null"
                                 }
-                              ]
+                              ],
+                              "description": "A meal at an inexpensive restaurant"
                             },
                             "mid_tier": {
-                              "description": "A meal for two at an mid-tier restaurant",
                               "anyOf": [
                                 {
                                   "type": "number"
@@ -359,10 +358,10 @@
                                 {
                                   "type": "null"
                                 }
-                              ]
+                              ],
+                              "description": "A meal for two at an mid-tier restaurant"
                             },
                             "mcdonalds": {
-                              "description": "A combo meal at McDonald's",
                               "anyOf": [
                                 {
                                   "type": "number"
@@ -370,10 +369,10 @@
                                 {
                                   "type": "null"
                                 }
-                              ]
+                              ],
+                              "description": "A combo meal at McDonald's"
                             },
                             "domestic_beer": {
-                              "description": "Domestic beer (1 US liquid pint or 473.2 ml)",
                               "anyOf": [
                                 {
                                   "type": "number"
@@ -381,10 +380,10 @@
                                 {
                                   "type": "null"
                                 }
-                              ]
+                              ],
+                              "description": "Domestic beer (1 US liquid pint or 473.2 ml)"
                             },
                             "imported_beer": {
-                              "description": "A bottle of imported beer (12 oz or 330 ml)",
                               "anyOf": [
                                 {
                                   "type": "number"
@@ -392,10 +391,10 @@
                                 {
                                   "type": "null"
                                 }
-                              ]
+                              ],
+                              "description": "A bottle of imported beer (12 oz or 330 ml)"
                             },
                             "cappuccino": {
-                              "description": "A cup of cappuccino",
                               "anyOf": [
                                 {
                                   "type": "number"
@@ -403,10 +402,10 @@
                                 {
                                   "type": "null"
                                 }
-                              ]
+                              ],
+                              "description": "A cup of cappuccino"
                             },
                             "soft_drink": {
-                              "description": "A bottle of soft drink (Coke, 12 oz or 330 ml)",
                               "anyOf": [
                                 {
                                   "type": "number"
@@ -414,10 +413,10 @@
                                 {
                                   "type": "null"
                                 }
-                              ]
+                              ],
+                              "description": "A bottle of soft drink (Coke, 12 oz or 330 ml)"
                             },
                             "water": {
-                              "description": "A bottle of water (12 oz or 330 ml)",
                               "anyOf": [
                                 {
                                   "type": "number"
@@ -425,7 +424,8 @@
                                 {
                                   "type": "null"
                                 }
-                              ]
+                              ],
+                              "description": "A bottle of water (12 oz or 330 ml)"
                             }
                           },
                           "required": [
@@ -443,7 +443,6 @@
                           "type": "object",
                           "properties": {
                             "milk": {
-                              "description": "Milk (1 gallon or 3.8 l)",
                               "anyOf": [
                                 {
                                   "type": "number"
@@ -451,10 +450,10 @@
                                 {
                                   "type": "null"
                                 }
-                              ]
+                              ],
+                              "description": "Milk (1 gallon or 3.8 l)"
                             },
                             "bread": {
-                              "description": "White bread (1 lb or 0.45 kg)",
                               "anyOf": [
                                 {
                                   "type": "number"
@@ -462,10 +461,10 @@
                                 {
                                   "type": "null"
                                 }
-                              ]
+                              ],
+                              "description": "White bread (1 lb or 0.45 kg)"
                             },
                             "rice": {
-                              "description": "Rice (1 lb or 0.45 kg)",
                               "anyOf": [
                                 {
                                   "type": "number"
@@ -473,10 +472,10 @@
                                 {
                                   "type": "null"
                                 }
-                              ]
+                              ],
+                              "description": "Rice (1 lb or 0.45 kg)"
                             },
                             "eggs": {
-                              "description": "A dozen of eggs (12)",
                               "anyOf": [
                                 {
                                   "type": "number"
@@ -484,10 +483,10 @@
                                 {
                                   "type": "null"
                                 }
-                              ]
+                              ],
+                              "description": "A dozen of eggs (12)"
                             },
                             "cheese": {
-                              "description": "Cheese (1 lb or 0.45 kg)",
                               "anyOf": [
                                 {
                                   "type": "number"
@@ -495,10 +494,10 @@
                                 {
                                   "type": "null"
                                 }
-                              ]
+                              ],
+                              "description": "Cheese (1 lb or 0.45 kg)"
                             },
                             "chicken_fillets": {
-                              "description": "Chicken fillets (1 lb or 0.45 kg)",
                               "anyOf": [
                                 {
                                   "type": "number"
@@ -506,10 +505,10 @@
                                 {
                                   "type": "null"
                                 }
-                              ]
+                              ],
+                              "description": "Chicken fillets (1 lb or 0.45 kg)"
                             },
                             "beef_round": {
-                              "description": "Beef round (1 lb or 0.45 kg)",
                               "anyOf": [
                                 {
                                   "type": "number"
@@ -517,10 +516,10 @@
                                 {
                                   "type": "null"
                                 }
-                              ]
+                              ],
+                              "description": "Beef round (1 lb or 0.45 kg)"
                             },
                             "apples": {
-                              "description": "Apples (1 lb or 0.45 kg)",
                               "anyOf": [
                                 {
                                   "type": "number"
@@ -528,10 +527,10 @@
                                 {
                                   "type": "null"
                                 }
-                              ]
+                              ],
+                              "description": "Apples (1 lb or 0.45 kg)"
                             },
                             "bananas": {
-                              "description": "Bananas (1 lb or 0.45 kg)",
                               "anyOf": [
                                 {
                                   "type": "number"
@@ -539,10 +538,10 @@
                                 {
                                   "type": "null"
                                 }
-                              ]
+                              ],
+                              "description": "Bananas (1 lb or 0.45 kg)"
                             },
                             "oranges": {
-                              "description": "Oranges (1 lb or 0.45 kg)",
                               "anyOf": [
                                 {
                                   "type": "number"
@@ -550,10 +549,10 @@
                                 {
                                   "type": "null"
                                 }
-                              ]
+                              ],
+                              "description": "Oranges (1 lb or 0.45 kg)"
                             },
                             "tomatoes": {
-                              "description": "Tomatoes (1 lb or 0.45 kg)",
                               "anyOf": [
                                 {
                                   "type": "number"
@@ -561,10 +560,10 @@
                                 {
                                   "type": "null"
                                 }
-                              ]
+                              ],
+                              "description": "Tomatoes (1 lb or 0.45 kg)"
                             },
                             "potatoes": {
-                              "description": "Potatoes (1 lb or 0.45 kg)",
                               "anyOf": [
                                 {
                                   "type": "number"
@@ -572,10 +571,10 @@
                                 {
                                   "type": "null"
                                 }
-                              ]
+                              ],
+                              "description": "Potatoes (1 lb or 0.45 kg)"
                             },
                             "onions": {
-                              "description": "Onions (1 lb or 0.45 kg)",
                               "anyOf": [
                                 {
                                   "type": "number"
@@ -583,10 +582,10 @@
                                 {
                                   "type": "null"
                                 }
-                              ]
+                              ],
+                              "description": "Onions (1 lb or 0.45 kg)"
                             },
                             "lettuce": {
-                              "description": "Lettuce (1 lb or 0.45 kg)",
                               "anyOf": [
                                 {
                                   "type": "number"
@@ -594,10 +593,10 @@
                                 {
                                   "type": "null"
                                 }
-                              ]
+                              ],
+                              "description": "Lettuce (1 lb or 0.45 kg)"
                             },
                             "water": {
-                              "description": "Water (0.4 gallon or 1.5 l)",
                               "anyOf": [
                                 {
                                   "type": "number"
@@ -605,10 +604,10 @@
                                 {
                                   "type": "null"
                                 }
-                              ]
+                              ],
+                              "description": "Water (0.4 gallon or 1.5 l)"
                             },
                             "wine": {
-                              "description": "A bottle of mid-tier wine",
                               "anyOf": [
                                 {
                                   "type": "number"
@@ -616,10 +615,10 @@
                                 {
                                   "type": "null"
                                 }
-                              ]
+                              ],
+                              "description": "A bottle of mid-tier wine"
                             },
                             "domestic_beer": {
-                              "description": "Domestic beer (17 oz or 0.5 l)",
                               "anyOf": [
                                 {
                                   "type": "number"
@@ -627,10 +626,10 @@
                                 {
                                   "type": "null"
                                 }
-                              ]
+                              ],
+                              "description": "Domestic beer (17 oz or 0.5 l)"
                             },
                             "imported_beer": {
-                              "description": "A bottle of imported beer (12 oz or 330 ml)",
                               "anyOf": [
                                 {
                                   "type": "number"
@@ -638,10 +637,10 @@
                                 {
                                   "type": "null"
                                 }
-                              ]
+                              ],
+                              "description": "A bottle of imported beer (12 oz or 330 ml)"
                             },
                             "cigarettes": {
-                              "description": "A pack of 20 cigarettes",
                               "anyOf": [
                                 {
                                   "type": "number"
@@ -649,7 +648,8 @@
                                 {
                                   "type": "null"
                                 }
-                              ]
+                              ],
+                              "description": "A pack of 20 cigarettes"
                             }
                           },
                           "required": [
@@ -678,7 +678,6 @@
                           "type": "object",
                           "properties": {
                             "one_way_ticket": {
-                              "description": "One way ticket of local public transport",
                               "anyOf": [
                                 {
                                   "type": "number"
@@ -686,10 +685,10 @@
                                 {
                                   "type": "null"
                                 }
-                              ]
+                              ],
+                              "description": "One way ticket of local public transport"
                             },
                             "monthly_pass": {
-                              "description": "Monthly pass of local public transport",
                               "anyOf": [
                                 {
                                   "type": "number"
@@ -697,10 +696,10 @@
                                 {
                                   "type": "null"
                                 }
-                              ]
+                              ],
+                              "description": "Monthly pass of local public transport"
                             },
                             "taxi_start": {
-                              "description": "Taxi start price",
                               "anyOf": [
                                 {
                                   "type": "number"
@@ -708,10 +707,10 @@
                                 {
                                   "type": "null"
                                 }
-                              ]
+                              ],
+                              "description": "Taxi start price"
                             },
                             "taxi_1_mile": {
-                              "description": "Taxi price (1 mile or 1.6 km)",
                               "anyOf": [
                                 {
                                   "type": "number"
@@ -719,10 +718,10 @@
                                 {
                                   "type": "null"
                                 }
-                              ]
+                              ],
+                              "description": "Taxi price (1 mile or 1.6 km)"
                             },
                             "taxi_1_hour_waiting": {
-                              "description": "Taxi price (1 hour waiting)",
                               "anyOf": [
                                 {
                                   "type": "number"
@@ -730,10 +729,10 @@
                                 {
                                   "type": "null"
                                 }
-                              ]
+                              ],
+                              "description": "Taxi price (1 hour waiting)"
                             },
                             "gasoline": {
-                              "description": "Gasoline (1 gallon or 3.8 l)",
                               "anyOf": [
                                 {
                                   "type": "number"
@@ -741,10 +740,10 @@
                                 {
                                   "type": "null"
                                 }
-                              ]
+                              ],
+                              "description": "Gasoline (1 gallon or 3.8 l)"
                             },
                             "compact_car": {
-                              "description": "New car (compact sized)",
                               "anyOf": [
                                 {
                                   "type": "number"
@@ -752,10 +751,10 @@
                                 {
                                   "type": "null"
                                 }
-                              ]
+                              ],
+                              "description": "New car (compact sized)"
                             },
                             "mid_car": {
-                              "description": "New car (mid-sized)",
                               "anyOf": [
                                 {
                                   "type": "number"
@@ -763,7 +762,8 @@
                                 {
                                   "type": "null"
                                 }
-                              ]
+                              ],
+                              "description": "New car (mid-sized)"
                             }
                           },
                           "required": [
@@ -781,7 +781,6 @@
                           "type": "object",
                           "properties": {
                             "basic": {
-                              "description": "Basic utilities (electricity, heating, cooling, water) fee for a mid-sized apartment",
                               "anyOf": [
                                 {
                                   "type": "number"
@@ -789,10 +788,10 @@
                                 {
                                   "type": "null"
                                 }
-                              ]
+                              ],
+                              "description": "Basic utilities (electricity, heating, cooling, water) fee for a mid-sized apartment"
                             },
                             "mobile": {
-                              "description": "Mobile phone monthly plan with calls and data",
                               "anyOf": [
                                 {
                                   "type": "number"
@@ -800,10 +799,10 @@
                                 {
                                   "type": "null"
                                 }
-                              ]
+                              ],
+                              "description": "Mobile phone monthly plan with calls and data"
                             },
                             "internet": {
-                              "description": "Internet monthly plan (Unlimited data, 60 Mbps or higher)",
                               "anyOf": [
                                 {
                                   "type": "number"
@@ -811,7 +810,8 @@
                                 {
                                   "type": "null"
                                 }
-                              ]
+                              ],
+                              "description": "Internet monthly plan (Unlimited data, 60 Mbps or higher)"
                             }
                           },
                           "required": [
@@ -824,7 +824,6 @@
                           "type": "object",
                           "properties": {
                             "fitness_club": {
-                              "description": "Monthly membership fee of a fitness club",
                               "anyOf": [
                                 {
                                   "type": "number"
@@ -832,10 +831,10 @@
                                 {
                                   "type": "null"
                                 }
-                              ]
+                              ],
+                              "description": "Monthly membership fee of a fitness club"
                             },
                             "tennis_court": {
-                              "description": "1 hour of tennis court rental fee",
                               "anyOf": [
                                 {
                                   "type": "number"
@@ -843,10 +842,10 @@
                                 {
                                   "type": "null"
                                 }
-                              ]
+                              ],
+                              "description": "1 hour of tennis court rental fee"
                             },
                             "cinema": {
-                              "description": "1 cinema ticket",
                               "anyOf": [
                                 {
                                   "type": "number"
@@ -854,7 +853,8 @@
                                 {
                                   "type": "null"
                                 }
-                              ]
+                              ],
+                              "description": "1 cinema ticket"
                             }
                           },
                           "required": [
@@ -867,7 +867,6 @@
                           "type": "object",
                           "properties": {
                             "preschool": {
-                              "description": "Monthly fee per child for a private full-day preschool",
                               "anyOf": [
                                 {
                                   "type": "number"
@@ -875,10 +874,10 @@
                                 {
                                   "type": "null"
                                 }
-                              ]
+                              ],
+                              "description": "Monthly fee per child for a private full-day preschool"
                             },
                             "international_primary_school": {
-                              "description": "Annual fee per child for an international primary school",
                               "anyOf": [
                                 {
                                   "type": "number"
@@ -886,7 +885,8 @@
                                 {
                                   "type": "null"
                                 }
-                              ]
+                              ],
+                              "description": "Annual fee per child for an international primary school"
                             }
                           },
                           "required": [
@@ -898,7 +898,6 @@
                           "type": "object",
                           "properties": {
                             "jeans": {
-                              "description": "1 pair of mid-tier jeans from a chain store",
                               "anyOf": [
                                 {
                                   "type": "number"
@@ -906,10 +905,10 @@
                                 {
                                   "type": "null"
                                 }
-                              ]
+                              ],
+                              "description": "1 pair of mid-tier jeans from a chain store"
                             },
                             "summer_dress": {
-                              "description": "1 mid-tier summer dress from a chain store",
                               "anyOf": [
                                 {
                                   "type": "number"
@@ -917,10 +916,10 @@
                                 {
                                   "type": "null"
                                 }
-                              ]
+                              ],
+                              "description": "1 mid-tier summer dress from a chain store"
                             },
                             "running_shoes": {
-                              "description": "1 pair of mid-tier running shoes",
                               "anyOf": [
                                 {
                                   "type": "number"
@@ -928,10 +927,10 @@
                                 {
                                   "type": "null"
                                 }
-                              ]
+                              ],
+                              "description": "1 pair of mid-tier running shoes"
                             },
                             "business_shoes": {
-                              "description": "1 pair of mid-tier men's leather business shoes",
                               "anyOf": [
                                 {
                                   "type": "number"
@@ -939,7 +938,8 @@
                                 {
                                   "type": "null"
                                 }
-                              ]
+                              ],
+                              "description": "1 pair of mid-tier men's leather business shoes"
                             }
                           },
                           "required": [
@@ -953,7 +953,6 @@
                           "type": "object",
                           "properties": {
                             "rent_city_center_1_bedroom": {
-                              "description": "Price to rent a 1 bedroom apartment in city center",
                               "anyOf": [
                                 {
                                   "type": "number"
@@ -961,10 +960,10 @@
                                 {
                                   "type": "null"
                                 }
-                              ]
+                              ],
+                              "description": "Price to rent a 1 bedroom apartment in city center"
                             },
                             "rent_outside_of_center_1_bedroom": {
-                              "description": "Price to rent a 1 bedroom apartment outside of city center",
                               "anyOf": [
                                 {
                                   "type": "number"
@@ -972,10 +971,10 @@
                                 {
                                   "type": "null"
                                 }
-                              ]
+                              ],
+                              "description": "Price to rent a 1 bedroom apartment outside of city center"
                             },
                             "rent_city_center_3_bedrooms": {
-                              "description": "Price to rent a 3 bedroom apartment in city center",
                               "anyOf": [
                                 {
                                   "type": "number"
@@ -983,10 +982,10 @@
                                 {
                                   "type": "null"
                                 }
-                              ]
+                              ],
+                              "description": "Price to rent a 3 bedroom apartment in city center"
                             },
                             "rent_outside_of_center_3_bedrooms": {
-                              "description": "Price to rent a 3 bedroom apartment outside of city center",
                               "anyOf": [
                                 {
                                   "type": "number"
@@ -994,10 +993,10 @@
                                 {
                                   "type": "null"
                                 }
-                              ]
+                              ],
+                              "description": "Price to rent a 3 bedroom apartment outside of city center"
                             },
                             "buy_city_center": {
-                              "description": "Price per square feet or 0.09 square meters to buy an apartment in city center",
                               "anyOf": [
                                 {
                                   "type": "number"
@@ -1005,10 +1004,10 @@
                                 {
                                   "type": "null"
                                 }
-                              ]
+                              ],
+                              "description": "Price per square feet or 0.09 square meters to buy an apartment in city center"
                             },
                             "buy_outside_of_center": {
-                              "description": "Price per square feet or 0.09 square meters to buy an apartment outside of city center",
                               "anyOf": [
                                 {
                                   "type": "number"
@@ -1016,7 +1015,8 @@
                                 {
                                   "type": "null"
                                 }
-                              ]
+                              ],
+                              "description": "Price per square feet or 0.09 square meters to buy an apartment outside of city center"
                             }
                           },
                           "required": [
@@ -1032,7 +1032,6 @@
                           "type": "object",
                           "properties": {
                             "average_monthly_net_salary": {
-                              "description": "Average Monthly Net Salary (after tax)",
                               "anyOf": [
                                 {
                                   "type": "number"
@@ -1040,7 +1039,8 @@
                                 {
                                   "type": "null"
                                 }
-                              ]
+                              ],
+                              "description": "Average Monthly Net Salary (after tax)"
                             }
                           },
                           "required": [
@@ -1051,7 +1051,6 @@
                           "type": "object",
                           "properties": {
                             "interest_rate": {
-                              "description": "20 years Mortgage Interest Rate in Percentages (annual rate)",
                               "anyOf": [
                                 {
                                   "type": "number"
@@ -1059,7 +1058,8 @@
                                 {
                                   "type": "null"
                                 }
-                              ]
+                              ],
+                              "description": "20 years Mortgage Interest Rate in Percentages (annual rate)"
                             }
                           },
                           "required": [
@@ -1230,15 +1230,15 @@
                       "type": "object",
                       "properties": {
                         "name": {
-                          "description": "The name of the place",
-                          "type": "string"
+                          "type": "string",
+                          "description": "The name of the place"
                         },
                         "aliases": {
-                          "description": "The aliases of the place in different cultures and languages",
                           "type": "array",
                           "items": {
                             "type": "string"
-                          }
+                          },
+                          "description": "The aliases of the place in different cultures and languages"
                         },
                         "country_code": {
                           "description": "The ISO 3166-1 alpha-2 country code of the place",
@@ -1247,22 +1247,22 @@
                           "maxLength": 2
                         },
                         "latitude": {
-                          "description": "The latitude of the place",
-                          "type": "number"
+                          "type": "number",
+                          "description": "The latitude of the place"
                         },
                         "longitude": {
-                          "description": "The longitude of the place",
-                          "type": "number"
+                          "type": "number",
+                          "description": "The longitude of the place"
                         },
                         "population": {
-                          "description": "The population of the place",
-                          "type": "string"
+                          "type": "string",
+                          "description": "The population of the place"
                         },
                         "elevation": {
-                          "description": "The elevation of the place",
                           "type": "integer",
                           "minimum": -9007199254740991,
-                          "maximum": 9007199254740991
+                          "maximum": 9007199254740991,
+                          "description": "The elevation of the place"
                         },
                         "place_id": {
                           "type": "string",

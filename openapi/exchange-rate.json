@@ -80,8 +80,8 @@
                         "maxLength": 3
                       },
                       "additionalProperties": {
-                        "description": "How much of the currency is equivalent to 1 base currency",
-                        "type": "number"
+                        "type": "number",
+                        "description": "How much of the currency is equivalent to 1 base currency"
                       }
                     }
                   },

@@ -77,10 +77,11 @@
                         "type": "object",
                         "properties": {
                           "id": {
-                            "type": "string",
-                            "description": "The id of the occupation code in format {classification}-{code}"
+                            "description": "The id of the occupation code in format {classification}-{code}",
+                            "type": "string"
                           },
                           "classification": {
+                            "description": "The occupation classification",
                             "type": "string",
                             "enum": [
                               "isco-2008",
@@ -93,16 +94,15 @@
                               "noc-2016",
                               "anzsco-2013",
                               "anzsco-2022"
-                            ],
-                            "description": "The occupation classification"
+                            ]
                           },
                           "code": {
-                            "type": "string",
-                            "description": "The code of the occupation under the classification"
+                            "description": "The code of the occupation under the classification",
+                            "type": "string"
                           },
                           "label": {
-                            "type": "string",
-                            "description": "The name of the occupation"
+                            "description": "The name of the occupation",
+                            "type": "string"
                           }
                         },
                         "required": [
@@ -154,13 +154,14 @@
             "schema": {
               "anyOf": [
                 {
-                  "type": "string",
-                  "description": "The id of the occupation code in format {classification}-{code}"
+                  "description": "The id of the occupation code in format {classification}-{code}",
+                  "type": "string"
                 },
                 {
                   "type": "object",
                   "properties": {
                     "classification": {
+                      "description": "The occupation classification",
                       "type": "string",
                       "enum": [
                         "isco-2008",
@@ -173,12 +174,11 @@
                         "noc-2016",
                         "anzsco-2013",
                         "anzsco-2022"
-                      ],
-                      "description": "The occupation classification"
+                      ]
                     },
                     "code": {
-                      "type": "string",
-                      "description": "The code of the occupation under the classification"
+                      "description": "The code of the occupation under the classification",
+                      "type": "string"
                     }
                   },
                   "required": [
@@ -293,10 +293,11 @@
                             "type": "object",
                             "properties": {
                               "id": {
-                                "type": "string",
-                                "description": "The id of the occupation code in format {classification}-{code}"
+                                "description": "The id of the occupation code in format {classification}-{code}",
+                                "type": "string"
                               },
                               "classification": {
+                                "description": "The occupation classification",
                                 "type": "string",
                                 "enum": [
                                   "isco-2008",
@@ -309,16 +310,15 @@
                                   "noc-2016",
                                   "anzsco-2013",
                                   "anzsco-2022"
-                                ],
-                                "description": "The occupation classification"
+                                ]
                               },
                               "code": {
-                                "type": "string",
-                                "description": "The code of the occupation under the classification"
+                                "description": "The code of the occupation under the classification",
+                                "type": "string"
                               },
                               "label": {
-                                "type": "string",
-                                "description": "The name of the occupation"
+                                "description": "The name of the occupation",
+                                "type": "string"
                               }
                             },
                             "required": [
@@ -449,10 +449,11 @@
                         "type": "object",
                         "properties": {
                           "id": {
-                            "type": "string",
-                            "description": "The id of the occupation code in format {classification}-{code}"
+                            "description": "The id of the occupation code in format {classification}-{code}",
+                            "type": "string"
                           },
                           "classification": {
+                            "description": "The occupation classification",
                             "type": "string",
                             "enum": [
                               "isco-2008",
@@ -465,16 +466,15 @@
                               "noc-2016",
                               "anzsco-2013",
                               "anzsco-2022"
-                            ],
-                            "description": "The occupation classification"
+                            ]
                           },
                           "code": {
-                            "type": "string",
-                            "description": "The code of the occupation under the classification"
+                            "description": "The code of the occupation under the classification",
+                            "type": "string"
                           },
                           "label": {
-                            "type": "string",
-                            "description": "The name of the occupation"
+                            "description": "The name of the occupation",
+                            "type": "string"
                           }
                         },
                         "required": [

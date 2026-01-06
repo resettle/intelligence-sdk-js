@@ -2,7 +2,7 @@
   "openapi": "3.1.0",
   "info": {
     "title": "Resettle Exchange Rate API",
-    "description": "",
+    "description": "Resettle Exchange Rate API provides reliable, historical currency conversion data with zero unnecessary complexity. You can retrieve exchange rates for all supported currencies against a single base currency on a given date. The API is designed for consistency and time-based queries, making it easy to power financial analytics, reporting, pricing, and auditing use cases.",
     "version": "1",
     "termsOfService": "https://resettle.ai/terms",
     "contact": {
@@ -80,8 +80,8 @@
                         "maxLength": 3
                       },
                       "additionalProperties": {
-                        "type": "number",
-                        "description": "How much of the currency is equivalent to 1 base currency"
+                        "description": "How much of the currency is equivalent to 1 base currency",
+                        "type": "number"
                       }
                     }
                   },

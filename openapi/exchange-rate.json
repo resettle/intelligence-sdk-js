@@ -300,6 +300,106 @@
           }
         ]
       }
+    },
+    "/exchange-rate/convert": {
+      "get": {
+        "operationId": "getExchange-rateConvert",
+        "description": "Convert based on current exchange rates",
+        "responses": {
+          "200": {
+            "description": "Convert result retrieved successfully",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "code": {
+                      "type": "integer",
+                      "minimum": -9007199254740991,
+                      "maximum": 9007199254740991
+                    },
+                    "message": {
+                      "type": "string"
+                    },
+                    "data": {
+                      "type": "object",
+                      "properties": {
+                        "value": {
+                          "type": "number",
+                          "description": "The convert result"
+                        }
+                      },
+                      "required": [
+                        "value"
+                      ]
+                    }
+                  },
+                  "required": [
+                    "code",
+                    "message",
+                    "data"
+                  ]
+                },
+                "examples": {
+                  "result": {
+                    "summary": "Convert result from USD to EUR on a random day",
+                    "value": {
+                      "code": 0,
+                      "message": "Success",
+                      "data": {
+                        "value": 85.738
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "in": "query",
+            "name": "from",
+            "schema": {
+              "type": "string",
+              "minLength": 3,
+              "maxLength": 3
+            },
+            "required": true,
+            "description": "The currency of the current value"
+          },
+          {
+            "in": "query",
+            "name": "value",
+            "schema": {
+              "type": "number"
+            },
+            "required": true,
+            "description": "The value"
+          },
+          {
+            "in": "query",
+            "name": "to",
+            "schema": {
+              "type": "string",
+              "minLength": 3,
+              "maxLength": 3
+            },
+            "required": true,
+            "description": "The target currency to convert to"
+          },
+          {
+            "in": "query",
+            "name": "date",
+            "schema": {
+              "type": "string",
+              "format": "date",
+              "pattern": "^(?:(?:\\d\\d[2468][048]|\\d\\d[13579][26]|\\d\\d0[48]|[02468][048]00|[13579][26]00)-02-29|\\d{4}-(?:(?:0[13578]|1[02])-(?:0[1-9]|[12]\\d|3[01])|(?:0[469]|11)-(?:0[1-9]|[12]\\d|30)|(?:02)-(?:0[1-9]|1\\d|2[0-8])))$"
+            },
+            "description": "The date in UTC that the exchange rate took effect"
+          }
+        ]
+      }
     }
   }
 }

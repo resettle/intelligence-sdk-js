@@ -22,4 +22,6 @@
  * SOFTWARE.
  */
 
+export * from './GetExchangeRateConvert200Response'
+export * from './GetExchangeRateConvert200ResponseData'
 export * from './GetExchangeRateQuery200Response'
